@@ -1,5 +1,4 @@
 function [] = plot_workspace_OLD(L,angle,limits,fig)
-% [] = plot_robot(Q,L,angle,limits,color,fig)
     
     l1a = L(1);
     l1b = L(2);
@@ -18,7 +17,7 @@ function [] = plot_workspace_OLD(L,angle,limits,fig)
     figure(fig)
     hold on
     offset = 3;
-        
+    
     for i = 1:3
         
         if i == 1
@@ -51,16 +50,16 @@ function [] = plot_workspace_OLD(L,angle,limits,fig)
 
         x3 = x2+l3*cos(angle+q3_grid).*sin(q1_grid); y3 = y2-l3*cos(angle+q3_grid).*cos(q1_grid); z3 = z2+l3*sin(angle+q3_grid);
 
-        plot3(x0(:),y0(:),z0(:),'o-k')
-        plot3(x1a(:),y1a(:),z1a(:),'o-k')
-        plot3(x1b(:),y1b(:),z1b(:),'.-r')
-        plot3(x1c(:),y1c(:),z1c(:),'.-g')
-%         plot3(x2(:),y2(:),z2(:),'.-g')
-        plot3(x3(:),y3(:),z3(:),'.-b')
+        P3 = [x3(:) y3(:) z3(:)];
+        P3 = sortrows(P3,3);
+        
+        P3_split = mat2cell(P3,repelem(size(z3,1), size(P3,1)/size(z3,1)));
+        
+        cellfun(@(x) plot3(x(:,1),x(:,2),x(:,3),'.-b'),P3_split);
         
     
     end
-    
+        
     grid on
     axis equal
     view(30,30)
