@@ -23,6 +23,10 @@ function [] = plot_robot_bold(Q,L,angle,fig)
     plot3([x1c x2],[y1c y2],[z1c z2],'.-g','LineWidth',4)
     plot3([x2 x3],[y2 y3],[z2 z3],'.-b','LineWidth',4)
     
+    % Plot Cw
+    plot3(x3,y3,z3,'ok','MarkerSize',8)
+    offset = 0.3;
+    text(x3+offset,y3+offset,z3+offset,'C_w','Color','black','FontSize',14);
     hold off
 
 end

@@ -1,4 +1,4 @@
-function [] = workspace_XY_projection(L,angle,limits,fig,nPoints)
+function [] = workspace_XZ_projection(L,angle,limits,fig,nPoints)
 
     q1_inf = limits(1); q1_sup = limits(2);
     q2_inf = limits(3); q2_sup = limits(4);
@@ -18,7 +18,7 @@ function [] = workspace_XY_projection(L,angle,limits,fig,nPoints)
     X3_LIMINFq1 = []; Y3_LIMINFq1 = []; Z3_LIMINFq1 = [];
     X3_LIMSUPq1 = []; Y3_LIMSUPq1 = []; Z3_LIMSUPq1 = [];
         
-    for i = 1:3
+    for i = 1:4
         
         if i == 1
             q2 = linspace(q2_sup,q2_sup,1);
@@ -26,14 +26,18 @@ function [] = workspace_XY_projection(L,angle,limits,fig,nPoints)
         end
         
         if i == 2
-            q2 = linspace(q2_inf,q2_inf,1);
-            q3 = linspace(q3_inf,q3_sup,nPoints_q3);
+            q2 = flip(linspace(q2_inf,q2_sup,nPoints_q2));
+            q3 = linspace(q3_sup,q3_sup,1);
         end
         
         if i == 3
-            
+            q2 = linspace(q2_inf,q2_inf,1);
+            q3 = flip(linspace(q3_inf,q3_sup,nPoints_q3));
+        end
+        
+        if i == 4
             q2 = linspace(q2_inf,q2_sup,nPoints_q2);
-            q3 = linspace(q3_inf,q3_sup,2);
+            q3 = linspace(q3_inf,q3_inf,1);
         end
         
         [q1_grid,q2_grid,q3_grid] = ndgrid(q1,q2,q3);
@@ -76,40 +80,30 @@ function [] = workspace_XY_projection(L,angle,limits,fig,nPoints)
         X3_LIMSUPq1 = [X3_LIMSUPq1 x3_LIMSUPq1(:)'];
         Y3_LIMSUPq1 = [Y3_LIMSUPq1 y3_LIMSUPq1(:)'];
         Z3_LIMSUPq1 = [Z3_LIMSUPq1 z3_LIMSUPq1(:)']; 
+            
+    end
+    
+    plot(X3_LIMINFq1(:),Z3_LIMINFq1(:),'b');
+    plot(X3_LIMSUPq1(:),Z3_LIMSUPq1(:),'b');
         
-    end
-    
-    if q1_inf ~= -pi && q1_sup ~= pi
-        plot(X3_LIMINFq1,Y3_LIMINFq1,'b');
-        plot(X3_LIMSUPq1,Y3_LIMSUPq1,'b');
-    end
-    
-    P3 = [X3; Y3; Z3];
-    external_limit_idx = vecnorm(P3(1:2,:))>=0.9999*max(vecnorm(P3(1:2,:)));
-    external_limit_idx = external_limit_idx & (P3(3,:) == P3(3,find(external_limit_idx,1,'first')));
-    external_limit = P3(1:2,external_limit_idx);
-    plot(external_limit(1,:),external_limit(2,:),'b');
-    
-    internal_limit_idx = vecnorm(P3(1:2,:))<1.0001*min(vecnorm(P3(1:2,:)));
-    internal_limit_idx = internal_limit_idx & (P3(3,:) == P3(3,find(internal_limit_idx,1,'first')));
-    internal_limit = P3(1:2,internal_limit_idx);
-    internal_limit = internal_limit(:,1:floor(length(internal_limit)/2));
-    plot(internal_limit(1,:),internal_limit(2,:),'b');
-    
-    vertices = [external_limit(1,:) flip(internal_limit(1,:)) internal_limit(1,1); ...
-                external_limit(2,:) flip(internal_limit(2,:)) internal_limit(2,1)]';
+    vertices = [X3_LIMINFq1; Z3_LIMINFq1]';
     faces = 1:size(vertices,1);
     area_color = [0.38 0.69 0.78];
     patch('Faces',faces,'Vertices',vertices,'FaceColor',area_color,'FaceAlpha',0.25,'EdgeColor','none');
-
+    
+    vertices = [X3_LIMSUPq1; Z3_LIMSUPq1]';
+    faces = 1:size(vertices,1);
+    area_color = [0.38 0.69 0.78];
+    patch('Faces',faces,'Vertices',vertices,'FaceColor',area_color,'FaceAlpha',0.25,'EdgeColor','none');
+    
     grid on
     axis equal
-    xlabel('x'); ylabel('y');
+    xlabel('x'); ylabel('z');
 
     xlim([min(x3(:))-offset,max(x3(:))+offset])
-    ylim([min(y3(:))-offset,max(y3(:))+offset])
+    ylim([min(z3(:))-offset,max(z3(:))+offset])
     
-    title('Projection of the workspace in the XY plane')
+    title('Projection of the workspace in the XZ plane')
     hold off
     
 end

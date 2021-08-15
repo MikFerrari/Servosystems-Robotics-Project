@@ -1,4 +1,4 @@
-function [] = workspace_YZ_projection(L,angle,limits,fig,nPoints)
+function [] = workspace_XY_projection_OLD(L,angle,limits,fig,nPoints)
 
     q1_inf = limits(1); q1_sup = limits(2);
     q2_inf = limits(3); q2_sup = limits(4);
@@ -53,20 +53,21 @@ function [] = workspace_YZ_projection(L,angle,limits,fig,nPoints)
     end
     
     P3 = [X3; Y3; Z3];
-    idx_planeXZ = abs(P3(1,:))<=0.1;
-    P3_planeYZ = P3(:,idx_planeXZ);
-    scatter3(P3_planeYZ(1,:),P3_planeYZ(2,:),P3_planeYZ(3,:),1,'b','filled');
+    idx_planeXY = vecnorm(P3(1:2,:))>=0.9999*max(vecnorm(P3(1:2,:))) | ...
+                  vecnorm(P3(1:2,:))<=1.0001*min(vecnorm(P3(1:2,:)));
+    P3_planeXY = P3(:,idx_planeXY);
+    scatter3(P3_planeXY(1,:),P3_planeXY(2,:),P3_planeXY(3,:),1,'b','filled');
 
     grid on
     axis equal
-    view(-90,0)
+    view(0,90)
     xlabel('x'); ylabel('y'); zlabel('z')
 
-    xlim([mean([max(X3),min(Y3)]),max(x3(:))+offset])
+    xlim([min(x3(:))-offset,max(x3(:))+offset])
     ylim([min(y3(:))-offset,max(y3(:))+offset])
     zlim([min(z0(:))-offset,max(z3(:))+offset])
     
-    title('Projection of the workspace in the YZ plane')
+    title('Projection of the workspace in the XY plane')
     hold off
     
 end

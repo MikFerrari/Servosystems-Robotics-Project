@@ -57,7 +57,6 @@ function [] = plot_workspace_OLD(L,angle,limits,fig)
         
         cellfun(@(x) plot3(x(:,1),x(:,2),x(:,3),'.-b'),P3_split);
         
-    
     end
         
     grid on
