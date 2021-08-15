@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<SimscapeMultibodyImportXML version="2.0" xmlns="urn:mathworks:SimscapeMultibody:import" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Created by="" on="08/15/21||20:12:13" using="Simscape Multibody Link Version 7.0" from="SolidWorks 29.3.0"/>
+<ModelUnits mass="kilogram" length="millimeter"/>
+<DataUnits mass="kilogram" length="meter"/>
+<RootAssembly name="FANUC_430 Robot" uid="FANUC_430 Robot" version="923">
+<AssemblyFile name="FANUC_430 Robot.SLDASM" type="SolidWorks Assembly"/>
+<InstanceTree>
+<Instance name="430-j3-1" uid="430-j3-1" entityUid="430-j3" rigid="true">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>-0.00024999999999582686 1.8150000000000004 0.30499999999999905</Translation>
+</Transform>
+<Instance name="430_j3-6-1" uid="430_j3-6-1" entityUid="430_j3-6*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="430_j3-3-1" uid="430_j3-3-1" entityUid="430_j3-3*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="430_j3-2-1" uid="430_j3-2-1" entityUid="430_j3-2*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="430_j3-5-1" uid="430_j3-5-1" entityUid="430_j3-5*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="430_j3-10-1" uid="430_j3-10-1" entityUid="430_j3-10*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="430_j3-1-1" uid="430_j3-1-1" grounded="true" entityUid="430_j3-1*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="430_j3-4-1" uid="430_j3-4-1" entityUid="430_j3-4*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="430_j3-7-1" uid="430_j3-7-1" entityUid="430_j3-7*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="430_j3-9-1" uid="430_j3-9-1" entityUid="430_j3-9*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="430_j3-8-1" uid="430_j3-8-1" entityUid="430_j3-8*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+</Instance>
+<Instance name="430-balancer-1" uid="430-balancer-1" entityUid="430-balancer*:*Default">
+<Transform>
+<Rotation>1 -9.3038824006761015e-16 -1.2400419558965997e-16 9.1612421887970235e-16 0.9962304531688434 -0.086746090280777233 2.0424429823620284e-16 0.086746090280777843 0.99623045316884351</Rotation>
+<Translation>-0.0035000000000003505 0.72239573836450344 -0.37499999999999289</Translation>
+</Transform>
+</Instance>
+<Instance name="430-j1-1" uid="430-j1-1" entityUid="430-j1*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0.22749999999999998 0</Translation>
+</Transform>
+</Instance>
+<Instance name="430-j1-hardstop-2" uid="430-j1-hardstop-2" entityUid="430-j1-hardstop*:*Default">
+<Transform>
+<Rotation>-0.50000000000001665 0 0.86602540378442905 0 1 0 -0.86602540378442905 0 -0.50000000000001665</Rotation>
+<Translation>0.25980762113529998 0.27000000000000002 -0.14999999999999999</Translation>
+</Transform>
+</Instance>
+<Instance name="430-j6-1" uid="430-j6-1" entityUid="430-j6*:*Default">
+<Transform>
+<Rotation>0 1 -2.829924475048873e-14 -1.0000000000000002 0 -2.4286128663675299e-16 -2.4286128663675299e-16 2.8299244750488726e-14 1.0000000000000002</Rotation>
+<Translation>0.00074999999995380845 2.0649999999999995 1.7812495099999983</Translation>
+</Transform>
+</Instance>
+<Instance name="430-j2-2-1" uid="430-j2-2-1" entityUid="430-j2-2*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0.74000000000000044 0.30499999999999916</Translation>
+</Transform>
+</Instance>
+<Instance name="430-j1-hardstop-1" uid="430-j1-hardstop-1" entityUid="430-j1-hardstop*:*Default">
+<Transform>
+<Rotation>-0.50000000000001665 0 -0.86602540378442905 0 1 0 0.86602540378442905 0 -0.50000000000001665</Rotation>
+<Translation>-0.25980762113529998 0.27000000000000002 -0.14999999999999999</Translation>
+</Transform>
+</Instance>
+<Instance name="430-j4-1" uid="430-j4-1" entityUid="430-j4*:*Default">
+<Transform>
+<Rotation>-1 0 -2.823116106920416e-14 0 -0.99999999999999989 -1.214306433183765e-16 -2.8231161069204166e-14 -1.214306433183765e-16 0.99999999999999989</Rotation>
+<Translation>-0.00025000000003295997 2.0650000000000013 1.3142499999999995</Translation>
+</Transform>
+</Instance>
+<Instance name="430-j5-1" uid="430-j5-1" entityUid="430-j5*:*Default">
+<Transform>
+<Rotation>-1 0 -2.8299244750489004e-14 0 -1.0000000000000002 -1.1969591984239969e-16 -2.8299244750488998e-14 -1.1969591984239969e-16 1.0000000000000002</Rotation>
+<Translation>0.00074999999995949834 2.0649999999999995 1.5802499999999982</Translation>
+</Transform>
+</Instance>
+<Instance name="430-base-2" uid="430-base-2" grounded="true" entityUid="430-base*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+</InstanceTree>
+<Constraints>
+<Concentric name="Concentric5">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j1-1</Uid>
+</InstancePath>
+<Position>0.081000000000004013 0.51249999999999973 0.30499999999999999</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j2-2-1</Uid>
+</InstancePath>
+<Position>0.3349999999999998 0 0</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Distance name="Distance4">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j1-1</Uid>
+</InstancePath>
+<Position>0.129 0.68253999999999992 0.47525158297019982</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j2-2-1</Uid>
+</InstancePath>
+<Position>0.129 -0.17743359536799996 0.17700235833970002</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+</Distance>
+<Concentric name="Concentric6">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j1-1</Uid>
+</InstancePath>
+<Position>0 0.042499999999997984 0</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-base-2</Uid>
+</InstancePath>
+<Position>0 0.22749999999996653 0</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Distance name="Distance5">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j1-1</Uid>
+</InstancePath>
+<Position>0.24699999999999997 0 0.24710763857119997</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-base-2</Uid>
+</InstancePath>
+<Position>0.24699999999999997 0.22750000000000001 0.24699999999999997</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+</Distance>
+<Distance name="Distance6">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j2-2-1</Uid>
+</InstancePath>
+<Position>0.19700000000000001 0.92784 -0.14715999999999996</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j3-1</Uid>
+<Uid>430_j3-1-1</Uid>
+</InstancePath>
+<Position>0.19725000000000398 0 -5.5511151231257827e-15</Position>
+<Axis>1 0 -2.8098237042988388e-14</Axis>
+</ConstraintGeometry>
+</Distance>
+<Concentric name="Concentric7">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j2-2-1</Uid>
+</InstancePath>
+<Position>0.19699999999996107 1.075 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j3-1</Uid>
+<Uid>430_j3-1-1</Uid>
+</InstancePath>
+<Position>0.19675000000000398 0 -5.5511151231257827e-15</Position>
+<Axis>1 0 -2.8098237042988385e-14</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Distance name="Distance8">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j5-1</Uid>
+</InstancePath>
+<Position>0.083200000000000024 0.083199999999999941 0.20099950999999994</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j6-1</Uid>
+</InstancePath>
+<Position>0.083228063151550069 0.083199999999999996 0</Position>
+<Axis>0 0 -1.0000000000000002</Axis>
+</ConstraintGeometry>
+</Distance>
+<Concentric name="Concentric8">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j5-1</Uid>
+</InstancePath>
+<Position>0 0 0.18619947000001891</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j6-1</Uid>
+</InstancePath>
+<Position>0 0 0.038999999999999924</Position>
+<Axis>0 0 -1.0000000000000002</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Parallel name="Parallel7">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j5-1</Uid>
+</InstancePath>
+<Position>0.083200000000000024 0.083199999999999941 0.20099950999999994</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j6-1</Uid>
+</InstancePath>
+<Position>0.083228063151550069 0.083199999999999996 0</Position>
+<Axis>0 0 -1.0000000000000002</Axis>
+</ConstraintGeometry>
+</Parallel>
+<Distance name="Distance10">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j4-1</Uid>
+</InstancePath>
+<Position>0.052000000000000005 0.049920000000000186 0.31598211610129989</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j5-1</Uid>
+</InstancePath>
+<Position>0.052999999999999999 0.052026102654540107 -0.052000000000000046</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+</Distance>
+<Parallel name="Parallel8">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j4-1</Uid>
+</InstancePath>
+<Position>0.052000000000000005 0.049920000000000186 0.31598211610129989</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j5-1</Uid>
+</InstancePath>
+<Position>0.052999999999999999 0.052026102654540107 -0.052000000000000046</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+</Parallel>
+<Distance name="Distance11">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j4-1</Uid>
+</InstancePath>
+<Position>0.098799979200000013 0.09879997919999961 0</Position>
+<Axis>0 0 -0.99999999999999989</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j3-1</Uid>
+<Uid>430_j3-1-1</Uid>
+</InstancePath>
+<Position>0 0.25 1.0092499999999998</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Distance>
+<Concentric name="Concentric13">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j4-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 0 0.99999999999999989</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j3-1</Uid>
+<Uid>430_j3-1-1</Uid>
+</InstancePath>
+<Position>0 0.25 1.0089999999995325</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Parallel name="Parallel9">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j4-1</Uid>
+</InstancePath>
+<Position>0.098799979200000013 0.09879997919999961 0</Position>
+<Axis>0 0 -0.99999999999999989</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j3-1</Uid>
+<Uid>430_j3-1-1</Uid>
+</InstancePath>
+<Position>0 0.25 1.0092499999999998</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Parallel>
+<Concentric name="Concentric14">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j4-1</Uid>
+</InstancePath>
+<Position>-0.087199999999997557 0 0.26600000000000001</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j5-1</Uid>
+</InstancePath>
+<Position>-0.11550000000002028 0 0</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Tangent name="Tangent2">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j2-2-1</Uid>
+</InstancePath>
+<Position>0.15349999999996095 -0.0056280438861929794 -0.21492632486970006</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-balancer-1</Uid>
+</InstancePath>
+<Position>0.14949999999999403 0.012371956113810256 0.46507367513029996</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+</Tangent>
+<Distance name="Distance12">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j1-1</Uid>
+</InstancePath>
+<Position>0.0050000000000000001 0.62323149021849988 0.05956114526947999</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-balancer-1</Uid>
+</InstancePath>
+<Position>0.34850000000000009 -0.056594612612740014 0.059476793752120005</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Distance>
+<Angle name="Angle1">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-base-2</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j1-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Angle>
+<Angle name="Angle2">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j1-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j2-2-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+</Angle>
+<Angle name="Angle3">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j2-2-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j3-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+</Angle>
+<Angle name="Angle4">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j3-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j4-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Angle>
+<Angle name="Angle5">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j4-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 0.99999999999999989 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j5-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 1.0000000000000002 0</Axis>
+</ConstraintGeometry>
+</Angle>
+<Angle name="Angle6">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j5-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>430-j6-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+</Angle>
+<Concentric name="Concentric16">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-j1-1</Uid>
+</InstancePath>
+<Position>0.39799999999996621 0.49489573836450002 -0.375</Position>
+<Axis>1 -5.9989654923726683e-16 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>430-balancer-1</Uid>
+</InstancePath>
+<Position>0.32848120521269203 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Concentric>
+</Constraints>
+</RootAssembly>
+<Assemblies>
+<Assembly name="430-j3" uid="430-j3" version="194">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<AssemblyFile name="430-j3.SLDASM" type="SolidWorks Assembly"/>
+</Assembly>
+</Assemblies>
+<Parts>
+<Part name="430-balancer" uid="430-balancer*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430-balancer.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>41.644379735461577</Mass>
+<CenterOfMass>0.17900000801047816 0.0050728289385489908 0.14651578081040809</CenterOfMass>
+<Inertia>1.2651668882469607 1.2672707169208015 0.52380058740155566 -0.022420043665635277 9.6496233770902808e-08 4.5847786401444667e-08</Inertia>
+</MassProperties>
+<GeometryFile name="430-balancer_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430-base" uid="430-base*:*Default" version="133">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430-base.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>674.3129939041886</Mass>
+<CenterOfMass>-0.0038951433949714954 0.11068122514172425 -0.062843666162107487</CenterOfMass>
+<Inertia>33.999938831026974 48.233105427353053 19.478941174061969 0.56528293004268326 -0.36472700970694116 -0.015827631340915325</Inertia>
+</MassProperties>
+<GeometryFile name="430-base_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430-j1" uid="430-j1*:*Default" version="110">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430-j1.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0</Mass>
+<CenterOfMass>0 0 0</CenterOfMass>
+<Inertia>0 0 0 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="430-j1_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430-j1-hardstop" uid="430-j1-hardstop*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430-j1-hardstop.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.39440362260700085</Mass>
+<CenterOfMass>0.013138309584169854 -0.019458575807196041 0.0046477415343406702</CenterOfMass>
+<Inertia>0.00039244924252329448 0.001767081688703294 0.0014548287457887548 9.5711146533064669e-06 0.00018142975244188534 -4.1384477572591654e-06</Inertia>
+</MassProperties>
+<GeometryFile name="430-j1-hardstop_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430-j2-2" uid="430-j2-2*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430-j2-2.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>60.795035894251583</Mass>
+<CenterOfMass>0.2534356325287131 0.470969944458899 0.038863754017744785</CenterOfMass>
+<Inertia>8.1938921410039551 0.76659003778557799 8.022586388820816 -0.05879962188685018 -0.0033711229929974653 -0.42770987032510283</Inertia>
+</MassProperties>
+<GeometryFile name="430-j2-2_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430-j4" uid="430-j4*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430-j4.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>6.6264277075408078</Mass>
+<CenterOfMass>-0.028814201830265753 5.7170663005359393e-10 0.17449260693053506</CenterOfMass>
+<Inertia>0.089718281324848451 0.092880834084772657 0.028564372952646001 8.4127710826697642e-09 0.017666244626522876 -6.3000162016667073e-09</Inertia>
+</MassProperties>
+<GeometryFile name="430-j4_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430-j5" uid="430-j5*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430-j5.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>5.1229095789371755</Mass>
+<CenterOfMass>-0.010371452828578969 7.5759290185506307e-08 0.093590796478033061</CenterOfMass>
+<Inertia>0.0381948836428554 0.066676102518592836 0.048209099299388644 -3.1483286222206027e-08 -0.0019134967465463764 2.964842544993087e-08</Inertia>
+</MassProperties>
+<GeometryFile name="430-j5_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430-j6" uid="430-j6*:*Default" version="115">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430-j6.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.72895159739402982</Mass>
+<CenterOfMass>0 0 0.018439410427418416</CenterOfMass>
+<Inertia>0.0013100369483420194 0.0012977651020389333 0.002434089896420097 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="430-j6_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430_j3-1" uid="430_j3-1*:*Default" version="170">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430_j3-1.sldprt" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>63.615861365687195</Mass>
+<CenterOfMass>0.0070622195704313374 0.14375811112457784 0.20288526325222919</CenterOfMass>
+<Inertia>6.6128780180999183 5.9299555415437011 1.9517669146931591 -0.8885662374326273 -0.0025462761989758394 0.099606712151459498</Inertia>
+</MassProperties>
+<GeometryFile name="430_j3-1_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.25098039215686274" g="0.50196078431372548" b="0.50196078431372548" a="1"/>
+<Diffuse r="0.25098039215686274" g="0.50196078431372548" b="0.50196078431372548" a="1"/>
+<Specular r="0.25098039215686274" g="0.50196078431372548" b="0.50196078431372548" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430_j3-10" uid="430_j3-10*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430_j3-10.sldprt" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.86329110301542855</Mass>
+<CenterOfMass>0.39345218452689723 0.14296858643685617 0.13963265488296878</CenterOfMass>
+<Inertia>0.010475113489928396 0.0068931838608010977 0.0070900679961456541 -0.005045055085639477 0.0025523814929642292 0.0025825924984472421</Inertia>
+</MassProperties>
+<GeometryFile name="430_j3-10_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430_j3-2" uid="430_j3-2*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430_j3-2.sldprt" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>9.0477868423564838e-05</Mass>
+<CenterOfMass>0.17860000000000004 0.30899854000000004 0.15649899</CenterOfMass>
+<Inertia>4.0715040790620063e-10 2.8078298500799919e-10 2.8078298500799656e-10 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="430_j3-2_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430_j3-3" uid="430_j3-3*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430_j3-3.sldprt" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>9.0477868423564838e-05</Mass>
+<CenterOfMass>0.17860000000000004 0.30899854000000004 0.25150002999999999</CenterOfMass>
+<Inertia>4.0715040790620052e-10 2.8078298500799914e-10 2.8078298500799656e-10 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="430_j3-3_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430_j3-4" uid="430_j3-4*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430_j3-4.sldprt" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>9.0477868423564838e-05</Mass>
+<CenterOfMass>0.17860000000000004 0.19099807999999999 0.15649899</CenterOfMass>
+<Inertia>4.0715040790620042e-10 2.8078298500799914e-10 2.807829850079964e-10 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="430_j3-4_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430_j3-5" uid="430_j3-5*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430_j3-5.sldprt" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>9.0477868423564838e-05</Mass>
+<CenterOfMass>0.17860000000000004 0.19099807999999999 0.25150002999999999</CenterOfMass>
+<Inertia>4.0715040790620032e-10 2.8078298500799909e-10 2.807829850079964e-10 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="430_j3-5_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430_j3-6" uid="430_j3-6*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430_j3-6.sldprt" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.00039269908169937512</Mass>
+<CenterOfMass>-0.096500000000000016 -0.055000000000000007 0.26400000000000018</CenterOfMass>
+<Inertia>3.272492347496691e-09 3.272492347498596e-09 4.9087385212457168e-09 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="430_j3-6_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430_j3-7" uid="430_j3-7*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430_j3-7.sldprt" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.00039269908169937512</Mass>
+<CenterOfMass>-0.096500000000000016 0.055000000000000007 0.26400000000000018</CenterOfMass>
+<Inertia>3.2724923474966901e-09 3.272492347498596e-09 4.908738521245716e-09 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="430_j3-7_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430_j3-8" uid="430_j3-8*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430_j3-8.sldprt" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.00039269908169937631</Mass>
+<CenterOfMass>0.096500000000000002 0.055 0.26400000000000018</CenterOfMass>
+<Inertia>3.2724923474967758e-09 3.2724923474967758e-09 4.9087385212439764e-09 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="430_j3-8_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="430_j3-9" uid="430_j3-9*:*Default" version="109">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="430_j3-9.sldprt" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.00039269908169937631</Mass>
+<CenterOfMass>0.096500000000000002 -0.055 0.26400000000000018</CenterOfMass>
+<Inertia>3.2724923474967079e-09 3.2724923474967762e-09 4.9087385212439086e-09 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="430_j3-9_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+</Parts>
+</SimscapeMultibodyImportXML>
