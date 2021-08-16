@@ -1,4 +1,5 @@
 function [] = workspace_XZ_projection(L,angle,limits,fig,nPoints)
+% Plot only one vertical section of the WS, the one on the XZ plane
 
     q1_inf = limits(1); q1_sup = limits(2);
     q2_inf = limits(3); q2_sup = limits(4);
@@ -8,15 +9,13 @@ function [] = workspace_XZ_projection(L,angle,limits,fig,nPoints)
     nPoints_q2 = nPoints(2);
     nPoints_q3 = nPoints(3);
     
-    q1 = linspace(q1_inf,q1_sup,nPoints_q1);
+    q1 = pi/2; % pi/2 instead of 0, due to the right angle created by link 1b
     
     figure(fig)
     hold on
     offset = 3;
       
     X3 = []; Y3 = []; Z3 = [];
-    X3_LIMINFq1 = []; Y3_LIMINFq1 = []; Z3_LIMINFq1 = [];
-    X3_LIMSUPq1 = []; Y3_LIMSUPq1 = []; Z3_LIMSUPq1 = [];
         
     for i = 1:4
         
@@ -55,43 +54,12 @@ function [] = workspace_XZ_projection(L,angle,limits,fig,nPoints)
         X3 = [X3 x3(:)'];
         Y3 = [Y3 y3(:)'];
         Z3 = [Z3 z3(:)']; 
-        
-        % Limits of actuator 1 (base rotation)
-        % LOWER LIMIT
-        [q1_grid_LIMINFq1,q2_grid_LIMINFq1,q3_grid_LIMINFq1] = ndgrid(q1_inf,q2,q3);
-        Q_LIMINFq1 = {q1_grid_LIMINFq1; q2_grid_LIMINFq1; q3_grid_LIMINFq1};
-        
-        [~,S] = dir_kin(Q_LIMINFq1,L,angle);
-        
-        x3_LIMINFq1 = S{16};   y3_LIMINFq1 = S{17};   z3_LIMINFq1 = S{18};
-
-        X3_LIMINFq1 = [X3_LIMINFq1 x3_LIMINFq1(:)'];
-        Y3_LIMINFq1 = [Y3_LIMINFq1 y3_LIMINFq1(:)'];
-        Z3_LIMINFq1 = [Z3_LIMINFq1 z3_LIMINFq1(:)'];
-        
-        % UPPER LIMIT
-        [q1_grid_LIMSUPq1,q2_grid_LIMSUPq1,q3_grid_LIMSUPq1] = ndgrid(q1_sup,q2,q3);
-        Q_LIMSUPq1 = {q1_grid_LIMSUPq1; q2_grid_LIMSUPq1; q3_grid_LIMSUPq1};
-        
-        [~,S] = dir_kin(Q_LIMSUPq1,L,angle);
-        
-        x3_LIMSUPq1 = S{16};   y3_LIMSUPq1 = S{17};   z3_LIMSUPq1 = S{18};
-
-        X3_LIMSUPq1 = [X3_LIMSUPq1 x3_LIMSUPq1(:)'];
-        Y3_LIMSUPq1 = [Y3_LIMSUPq1 y3_LIMSUPq1(:)'];
-        Z3_LIMSUPq1 = [Z3_LIMSUPq1 z3_LIMSUPq1(:)']; 
             
     end
     
-    plot(X3_LIMINFq1(:),Z3_LIMINFq1(:),'b');
-    plot(X3_LIMSUPq1(:),Z3_LIMSUPq1(:),'b');
-        
-    vertices = [X3_LIMINFq1; Z3_LIMINFq1]';
-    faces = 1:size(vertices,1);
-    area_color = [0.38 0.69 0.78];
-    patch('Faces',faces,'Vertices',vertices,'FaceColor',area_color,'FaceAlpha',0.25,'EdgeColor','none');
+    plot(X3,Z3,'b');
     
-    vertices = [X3_LIMSUPq1; Z3_LIMSUPq1]';
+    vertices = [X3; Z3]';
     faces = 1:size(vertices,1);
     area_color = [0.38 0.69 0.78];
     patch('Faces',faces,'Vertices',vertices,'FaceColor',area_color,'FaceAlpha',0.25,'EdgeColor','none');
@@ -100,8 +68,8 @@ function [] = workspace_XZ_projection(L,angle,limits,fig,nPoints)
     axis equal
     xlabel('x'); ylabel('z');
 
-    xlim([min(x3(:))-offset,max(x3(:))+offset])
-    ylim([min(z3(:))-offset,max(z3(:))+offset])
+%     xlim([min(x3(:))-offset,max(x3(:))+offset])
+%     ylim([min(z3(:))-offset,max(z3(:))+offset])
     
     title('Projection of the workspace in the XZ plane')
     hold off

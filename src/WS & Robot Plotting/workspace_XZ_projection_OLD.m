@@ -53,7 +53,7 @@ function [] = workspace_XZ_projection_OLD(L,angle,limits,fig,nPoints)
     end
     
     P3 = [X3; Y3; Z3];
-    idx_planeXZ = abs(P3(2,:))<=0.1;
+    idx_planeXZ = abs(P3(2,:))<=0.1 & P3(1,:)>=0;
     P3_planeXZ = P3(:,idx_planeXZ);
     scatter3(P3_planeXZ(1,:),P3_planeXZ(2,:),P3_planeXZ(3,:),1,'b','filled');
 

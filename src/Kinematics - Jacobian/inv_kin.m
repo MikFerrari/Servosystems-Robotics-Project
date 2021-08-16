@@ -28,9 +28,9 @@ function Q = inv_kin(S,L,angle,sol)
     A = (z-l1a-tan(angle)*(x.*sin(q1)-y.*cos(q1)))/l3;
     B = sqrt(1+tan(angle)^2);
     if sol == 1
-        q3 = -atan2(1,tan(angle))-angle;
+        q3 = acos(A./B)-atan2(1,tan(angle))-angle;
     elseif sol == 2
-        q3 = -acos(A./B)+atan2(1,tan(angle))+angle;
+        q3 = -acos(A./B)-atan2(1,tan(angle))-angle;
     else
         error("Only values 1 and 2 are possible for the parameter 'sol'")
     end
@@ -39,6 +39,7 @@ function Q = inv_kin(S,L,angle,sol)
     % There is a unique solution, which hovewer depends on the choice of q3
     q2 = (z-l1a-l3*sin(angle+q3))/sin(angle)-l1c-l2;
     
+    q1 = mod(q1,pi);    q3 = mod(q3,pi);
     Q = {q1; q2; q3};
     
 end
