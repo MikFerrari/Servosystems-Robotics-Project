@@ -5,42 +5,40 @@ function Q = inv_kin(S,L,angle,sol)
     x = S{1}; y = S{2}; z = S{3};
     
     % Compute q1 (needs only x and y)
-    q1 = acos(l1b./sqrt(x.^2+y.^2))+atan2(y,x);
+    if y > 0 
+        phi = atan(x/y);
+    elseif y < 0 
+        phi = atan(x/y)+pi;
+    end
+    
+    R = (x^2+y^2)^0.5; 
+    q1 = pi-asin(l1b/R)-phi;
     
     % Compute q3 (needs x or y, z and q1)
-    % There are 2 possible solutions:
-    % sol 1: q3 >= 0
-    % sol 2: q3 < 0
-    
-%     argument = ((y-l1b*sin(q1))./(cos(q1))*sin(angle)+(z-l1a)*cos(angle))/l3;
-%     if sol == 1
-%         q3 = asin(argument);
-%     elseif sol == 2
-%         if argument >= 0
-%             q3 = pi-asin(argument);
-%         else
-%             q3 = -pi-asin(argument);
-%         end
-%     else
-%         error("Only values 1 and 2 are possible for the parameter 'sol'")
-%     end
-    
-    A = (z-l1a-tan(angle)*(x.*sin(q1)-y.*cos(q1)))/l3;
-    B = sqrt(1+tan(angle)^2);
-    if sol == 1
-        q3 = acos(A./B)-atan2(1,tan(angle))-angle;
-    elseif sol == 2
-        q3 = -acos(A./B)-atan2(1,tan(angle))-angle;
+    % There are 2 possible solutions
+    if q1 == 0.5*pi
+        argument = (-x*sin(angle)+(z-l1a)*cos(angle))/l3;
+    elseif q1 == -0.5*pi
+        argument = (x*sin(angle)+(z-l1a)*cos(angle))/l3;
     else
-        error("Only values 1 and 2 are possible for the parameter 'sol'")
+        argument = ((y-l1b*sin(q1))./(cos(q1))*sin(angle)+(z-l1a)*cos(angle))/l3;
     end
-
+    
+    if sol == 1
+        q3 = asin(argument);
+    elseif sol == 2
+        if argument >= 0
+            q3 = pi-asin(argument);
+        else
+            q3 = -pi-asin(argument);
+        end
+    end
+    
     % Compute q2 (needs z and q3)
     % There is a unique solution, which hovewer depends on the choice of q3
-    q2 = (z-l1a-l3*sin(angle+q3))/sin(angle)-l1c-l2;
+    q2 = ( z-l1a-l3*sin(angle+q3) )/sin(angle) - l1c-l2;
     
-    q1 = mod(q1,pi);    q3 = mod(q3,pi);
-    Q = {q1; q2; q3};
-    
+    Q = {q1; real(q2); real(q3)};
+        
 end
 
