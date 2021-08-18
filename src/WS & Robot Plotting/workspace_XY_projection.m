@@ -12,7 +12,6 @@ function [] = workspace_XY_projection(L,angle,limits,fig,nPoints)
     
     figure(fig)
     hold on
-    offset = 3;
       
     X3 = []; Y3 = []; Z3 = [];
     X3_LIMINFq1 = []; Y3_LIMINFq1 = []; Z3_LIMINFq1 = [];
@@ -104,10 +103,10 @@ function [] = workspace_XY_projection(L,angle,limits,fig,nPoints)
 
     grid on
     axis equal
-    xlabel('x'); ylabel('y');
-
-    xlim([min(x3(:))-offset,max(x3(:))+offset])
-    ylim([min(y3(:))-offset,max(y3(:))+offset])
+    xlabel('x [m]'); ylabel('y [m]');
+    
+    xlim([1.1*min(X3) 1.1*max(X3)])
+    ylim([1.1*min(Y3) 1.1*max(Y3)])
     
     title('Projection of the workspace in the XY plane')
     hold off

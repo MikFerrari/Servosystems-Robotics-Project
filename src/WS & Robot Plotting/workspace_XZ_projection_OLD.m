@@ -12,7 +12,6 @@ function [] = workspace_XZ_projection_OLD(L,angle,limits,fig,nPoints)
     
     figure(fig)
     hold on
-    offset = 3;
       
     X3 = []; Y3 = []; Z3 = [];
     
@@ -55,16 +54,15 @@ function [] = workspace_XZ_projection_OLD(L,angle,limits,fig,nPoints)
     P3 = [X3; Y3; Z3];
     idx_planeXZ = abs(P3(2,:))<=0.1 & P3(1,:)>=0;
     P3_planeXZ = P3(:,idx_planeXZ);
-    scatter3(P3_planeXZ(1,:),P3_planeXZ(2,:),P3_planeXZ(3,:),1,'b','filled');
+    scatter3(P3_planeXZ(1,:),P3_planeXZ(2,:),P3_planeXZ(3,:),1,'b','filled')
 
     grid on
     axis equal
     view(0,0)
-    xlabel('x'); ylabel('y'); zlabel('z')
-
-    xlim([min(x3(:))-offset,max(x3(:))+offset])
-    ylim([min(y3(:))-offset,max(y3(:))+offset])
-    zlim([min(z0(:))-offset,max(z3(:))+offset])
+    xlabel('x [m]'); ylabel('y [m]'); zlabel('z [m]')
+    
+    xlim([0 1.1*max(X3)])
+    zlim([0 1.1*max(Z3)]);
     
     title('Projection of the workspace in the XZ plane')
     hold off

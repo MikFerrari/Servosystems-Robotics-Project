@@ -8,14 +8,9 @@ function [] = plot_robot_bold(Q,L,angle,fig)
     x1c = S{10};  y1c = S{11};  z1c = S{12};
     x2 = S{13};   y2 = S{14};   z2 = S{15};
     x3 = S{16};   y3 = S{17};   z3 = S{18};
-    
-    S = [S{:}]';
-    S = reshape(S,3,[]);
 
     figure(fig)
     hold on
-    
-    %     plot3(S(1,:),S(2,:),S(3,:),'.-k','LineWidth',2.5)   % To plot in one go
     
     plot3([x0 x1a],[y0 y1a],[z0 z1a],'.-r','LineWidth',4)
     plot3([x1a x1b],[y1a y1b],[z1a z1b],'.-r','LineWidth',4)
@@ -25,8 +20,7 @@ function [] = plot_robot_bold(Q,L,angle,fig)
     
     % Plot Cw
     plot3(x3,y3,z3,'ok','MarkerSize',8)
-    offset = 0.3;
-    text(x3+offset,y3+offset,z3+offset,'C_w','Color','black','FontSize',14);
+    text(1.1*x3,1.1*y3,1.1*z3,'C_w','Color','black','FontSize',14);
     hold off
 
 end

@@ -1,4 +1,73 @@
 clc; clear; close all;
+%%
+
+DHdirect = M03*P3e;
+DHdirect_MLF = matlabFunction(DHdirect,'Vars',[q1 q2 q3]);
+
+%%
+%     S = DHdirect(Q(1),Q(2),Q(3));
+    
+%     x0 = 0;                                         y0 = 0;                                         z0 = 0;
+%     x1a = x0;                                       y1a = y0;                                       z1a = z0+D(1);
+%     x1b = x0+A(1)*cos(Q(1));                        y1b = y0-A(1)*sin(Q(1));                        z1b = z1a;
+%     x2 = x1b-(D(2)+Q(2))*cos(alpha)*sin(Q(1));      y2 = y1b-(D(2)+Q(2))*cos(alpha)*cos(Q(1));      z2 = z1b+(D(2)+Q(2))*sin(alpha);
+%     x3 = x2-A(3)*cos(alpha)*sin(Q(1));              y3 = y2-A(3)*cos(alpha)*cos(Q(1));              z3 = z2+A(3)*sin(alpha+Q(3));
+    
+    
+    x0 = 0;
+    y0 = 0;
+    z0 = 0;
+
+    x1a = x0;
+    y1a = y0;
+    z1a = z0+D(1);
+
+    x1b = x1a+A(1)*cos(Q(1));
+    y1b = x1a+A(1)*sin(Q(1));
+    z1b = z1a;
+
+    x2 = x1b+(D(2)+Q(2))*cos(angle).*sin(Q(1));
+    y2 = y1b-(D(2)+Q(2))*cos(angle).*cos(Q(1));
+    z2 = z1b+(D(2)+Q(2))*sin(angle);
+
+    x3 = x2+A(3)*cos(angle+Q(3)).*sin(Q(1));
+    y3 = y2-A(3)*cos(angle+Q(3)).*cos(Q(1));
+    z3 = z2+A(3)*sin(angle+Q(3));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %% caso 1
 q=[0 0 0];
 %Define DH parameters

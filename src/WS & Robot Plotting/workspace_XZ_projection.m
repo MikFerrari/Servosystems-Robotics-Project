@@ -13,7 +13,6 @@ function [] = workspace_XZ_projection(L,angle,limits,fig,nPoints)
     
     figure(fig)
     hold on
-    offset = 3;
       
     X3 = []; Y3 = []; Z3 = [];
         
@@ -57,7 +56,7 @@ function [] = workspace_XZ_projection(L,angle,limits,fig,nPoints)
             
     end
     
-    plot(X3,Z3,'b');
+    p = plot(X3,Z3,'b');
     
     vertices = [X3; Z3]';
     faces = 1:size(vertices,1);
@@ -66,10 +65,9 @@ function [] = workspace_XZ_projection(L,angle,limits,fig,nPoints)
     
     grid on
     axis equal
-    xlabel('x'); ylabel('z');
-
-%     xlim([min(x3(:))-offset,max(x3(:))+offset])
-%     ylim([min(z3(:))-offset,max(z3(:))+offset])
+    xlabel('x [m]'); ylabel('z [m]');
+    
+    ylim([0, 1.1*max(Z3)]);
     
     title('Projection of the workspace in the XZ plane')
     hold off

@@ -12,7 +12,6 @@ function [] = plot_workspace(L,angle,limits,fig,nPoints)
     
     figure(fig)
     hold on
-    offset = 3;
     
     for i = 1:3
         
@@ -59,10 +58,14 @@ function [] = plot_workspace(L,angle,limits,fig,nPoints)
     grid on
     axis equal
     view(30,30)
-    xlabel('x'); ylabel('y'); zlabel('z')
+    xlabel('x [m]'); ylabel('y [m]'); zlabel('z [m]')
+    
+    offset = mean([max(P3(:,1)) max(P3(:,2))])/10;
+    
     xlim([min(x3(:))-offset,max(x3(:))+offset])
     ylim([min(y3(:))-offset,max(y3(:))+offset])
     zlim([min(z0(:))-offset,max(z3(:))+offset])
+    
     title('Robot workspace in the cartesian space')
     hold off
     
