@@ -5,7 +5,7 @@ function Q = inv_kin(S,L,angle,sol)
     x = S{1}; y = S{2}; z = S{3};
     
     % Compute q1 (needs only x and y)
-    if y > 0 
+    if y >= 0 
         phi = atan(x/y);
     elseif y < 0 
         phi = atan(x/y)+pi;

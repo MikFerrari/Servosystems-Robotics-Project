@@ -1,7 +1,8 @@
 function Q = inv_kin_numerical(S,L,angle,Q0)
 
     fun = @(x) gripper_coord(S,L,angle,x);
-    Q = fsolve(fun,[Q0{:}]');
+    opt = optimset('Display','off');
+    Q = fsolve(fun,[Q0{:}]',opt);
     Q = num2cell(Q);
     
 end
