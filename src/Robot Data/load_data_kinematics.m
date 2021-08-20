@@ -22,7 +22,7 @@ q1p_inf = -4;       q1p_sup = 4;        % [rad/s]
 q2p_inf = -0.25;    q2p_sup = 0.25;     % [m/s]
 q3p_inf = -8;       q3p_sup = 8;        % [rad/s]
 
-ang_vel_limits = [q1p_inf q1p_sup q2p_inf q2p_sup q3p_inf q3p_sup];
+vel_limits = [q1p_inf q1p_sup q2p_inf q2p_sup q3p_inf q3p_sup];
 
 % ACTUATOR ACCELERATION LIMITS
 % Chosen as half of the maximum velocity, but it is not mandatory
@@ -30,4 +30,4 @@ q1pp_inf = -2;      q1pp_sup = 2;       % [rad/s^2]
 q2pp_inf = -0.1;    q2pp_sup = 0.1;     % [m/s^2]
 q3pp_inf = -4;      q3pp_sup = 4;       % [rad/s^2]
 
-ang_acc_limits = [q1pp_inf q1pp_sup q2pp_inf q2pp_sup q3pp_inf q3pp_sup];
+acc_limits = [q1pp_inf q1pp_sup q2pp_inf q2pp_sup q3pp_inf q3pp_sup];

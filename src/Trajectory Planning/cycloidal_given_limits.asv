@@ -13,7 +13,7 @@ function [x,xp,xpp] = cycloidal_given_limits(t,pos_lim,vel_lim,acc_lim,S0,dS)
 
     A = acc_lim;
 
-    while V > vel_lim || x < pos_lim(1) || x > pos_lim(2)
+    while V > vel_lim || x 
         T = sqrt(2*pi*dS/A);
         V = A*T/(2*pi);
 
