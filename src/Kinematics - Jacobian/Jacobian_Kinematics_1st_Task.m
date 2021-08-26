@@ -105,7 +105,11 @@ for i = 1:nPoints
     
     % POSITION OF THE GRIPPER ALONG THE TRAJECTORY
     % (velocity and acceleration are computed afterwards using diff()/dT)
-    pos(i) = norm(S(1:3,i) - S(1:3,1));
+    if i ~= 1
+        pos(i) = pos(i-1) + norm(S(1:3,i) - S(1:3,i-1));
+    elseif i == 1
+        pos(i) = 0;
+    end
     
 end
 
@@ -115,21 +119,21 @@ end
 dT = Ttot/nPoints;
 
 % GRIPPER COORDINATES
-xp_diff = diff(S(1,:),[],2)/dT;
-yp_diff = diff(S(2,:),[],2)/dT;
-zp_diff = diff(S(3,:),[],2)/dT;
+xp_diff = [0 diff(S(1,:),[],2)/dT];
+yp_diff = [0 diff(S(2,:),[],2)/dT];
+zp_diff = [0 diff(S(3,:),[],2)/dT];
 
-xpp_diff = diff(Sp(1,:),[],2)/dT;
-ypp_diff = diff(Sp(2,:),[],2)/dT;
-zpp_diff = diff(Sp(3,:),[],2)/dT;
+xpp_diff = [0 diff(Sp(1,:),[],2)/dT];
+ypp_diff = [0 diff(Sp(2,:),[],2)/dT];
+zpp_diff = [0 diff(Sp(3,:),[],2)/dT];
 
 % GRIPPER VELOCITY AND ACCELERATION ALONG THE TRAJECTORY
-vel = diff(pos)/dT;
-acc = diff(vel)/dT;
+vel = [0 diff(pos)/dT];
+acc = [0 diff(vel)/dT];
 
 % JOINT COORDINATES
-Qp_diff = diff(Q,[],2)/dT;
-Qpp_diff = diff(Qp,[],2)/dT;
+Qp_diff = [[0; 0; 0] diff(Q,[],2)/dT];
+Qpp_diff = [[0; 0; 0] diff(Qp,[],2)/dT];
 
 
 %% Plot all results
@@ -147,103 +151,5 @@ xlabel('x [m]'); ylabel('y [m]'); zlabel('z [m]')
 title('Trajectory from the home position to the beginning of the shape');
 legend('trajectory','home position','first point of the shape');
 
-
-% POSITION, VELOCITY, ACCELERATION IN GRIPPER SPACE
-figure('name','Motion from home to first point of the shape - Gripper space','NumberTitle','off')
-t = tiledlayout(3,1);
-nexttile
-grid on
-plot(tt,S(1,:), tt,S(2,:), tt,S(3,:), [tt(1) tt(end)],[0 0],'k')
-xlabel('time [s]'); ylabel('gripper position [m]')
-legend('x','y','z')
-nexttile
-grid on
-plot(tt,Sp(1,:), tt,Sp(2,:), tt,Sp(3,:), [tt(1) tt(end)],[0 0],'k')
-xlabel('time [s]'); ylabel('gripper velocity [m/s]')
-legend('x','y','z')
-nexttile
-grid on
-plot(tt,Spp(1,:), tt,Spp(2,:), tt,Spp(3,:), [tt(1) tt(end)],[0 0],'k')
-xlabel('time [s]'); ylabel('gripper acceleration [m/s^2]')
-legend('x','y','z')
-
-title(t,'Gripper coordinates from the home position to the beginning of the shape');
-
-
-% POSITION, VELOCITY, ACCELERATION IN JOINT SPACE
-figure('name','Motion from home to first point of the shape - Joint space','NumberTitle','off')
-t = tiledlayout(3,1);
-nexttile
-grid on
-plot(tt,Q(1,:), tt,Q(2,:), tt,Q(3,:), [tt(1) tt(end)],[0 0],'k')
-xlabel('time [s]'); ylabel('joint position')
-legend('x [rad]','y [m]','z [rad]')
-nexttile
-grid on
-plot(tt,Qp(1,:), tt,Qp(2,:), tt,Qp(3,:), [tt(1) tt(end)],[0 0],'k')
-xlabel('time [s]'); ylabel('joint velocity')
-legend('x [rad/s]','y [m/s]','z [rad/s]')
-nexttile
-grid on
-plot(tt,Qpp(1,:), tt,Qpp(2,:), tt,Qpp(3,:), [tt(1) tt(end)],[0 0],'k')
-xlabel('time [s]'); ylabel('joint acceleration')
-legend('x [rad/s^2]','y [m/s^2]','z [rad/s^2]')
-
-title(t,'Joint coordinates from the home position to the beginning of the shape');
-
-
-% PLOT POSITION, VELOCITY AND ACCELERATION FOR X, Y AND Z ALONG THE TRAJECTORY
-figure('Name','Motion from home to first point of the shape - Curvilinear abscissa','NumberTitle','off')
-plot(tt,pos, tt(1:end-1),vel, tt(1:end-2),acc, [tt(1) tt(end)],[0 0],'k')
-grid on
-legend('displacement','velocity','acceleration','Location','northwest')
-title('Motion along the trajectory')
-xlabel('time [s]'), ylabel('[cm] - [cm/s] - [cm/s^2]')
-
-title(t,'Curvilinear absissa, velocity and acceleration along the trajectory');
-
-
-% PLOT VELOCITY AND ACCELERATION FOR X, Y AND Z  - ANALYTICAL VS NUMERICAL SOLUTION
-figure('name','Motion from home to first point of the shape - Gripper space','NumberTitle','off')
-t = tiledlayout(3,1);
-nexttile
-grid on
-plot(tt,Sp(1,:), tt(1:end-1),xp_diff, tt,Spp(1,:), tt(1:end-1),xpp_diff, [tt(1) tt(end)],[0 0],'k')
-xlabel('time [s]'); ylabel('x direction')
-legend('velocity - analytical','velocity - numerical','acceleration - analytical','acceleration - numerical')
-nexttile
-grid on
-plot(tt,Sp(2,:), tt(1:end-1),yp_diff, tt,Spp(2,:), tt(1:end-1),ypp_diff, [tt(1) tt(end)],[0 0],'k')
-xlabel('time [s]'); ylabel('y direction')
-legend('velocity - analytical','velocity - numerical','acceleration - analytical','acceleration - numerical')
-nexttile
-grid on
-plot(tt,Sp(3,:), tt(1:end-1),zp_diff, tt,Spp(3,:), tt(1:end-1),zpp_diff, [tt(1) tt(end)],[0 0],'k')
-xlabel('time [s]'); ylabel('z direction')
-legend('velocity - analytical','velocity - numerical','acceleration - analytical','acceleration - numerical')
-
-title(t,{'Gripper coordinates from the home position to the beginning of the shape', ...
-         'Analytical vs numerical solution'});
-
-
-% PLOT JOINT COORDINATES - ANALYTICAL VS NUMERICAL SOLUTION
-figure('name','Motion from home to first point of the shape - Joint space','NumberTitle','off')
-t = tiledlayout(3,1);
-nexttile
-grid on
-plot(tt,Qp(1,:), tt(1:end-1),Qp_diff(1,:), tt,Qpp(1,:), tt(1:end-1),Qpp_diff(1,:), [tt(1) tt(end)],[0 0],'k')
-xlabel('time [s]'); ylabel('joint 1')
-legend('velocity - analytical','velocity - numerical','acceleration - analytical','acceleration - numerical')
-nexttile
-grid on
-plot(tt,Qp(2,:), tt(1:end-1),Qp_diff(2,:), tt,Qpp(2,:), tt(1:end-1),Qpp_diff(2,:), [tt(1) tt(end)],[0 0],'k')
-xlabel('time [s]'); ylabel('joint 2')
-legend('velocity - analytical','velocity - numerical','acceleration - analytical','acceleration - numerical')
-nexttile
-grid on
-plot(tt,Qp(3,:), tt(1:end-1),Qp_diff(3,:), tt,Qpp(3,:), tt(1:end-1),Qpp_diff(3,:), [tt(1) tt(end)],[0 0],'k')
-xlabel('time [s]'); ylabel('joint 3')
-legend('velocity - analytical','velocity - numerical','acceleration - analytical','acceleration - numerical')
-
-title(t,{'Joint coordinates from the home position to the beginning of the shape', ...
-         'Analytical vs numerical solution'});
+% PLOTS
+create_plots_kinematics

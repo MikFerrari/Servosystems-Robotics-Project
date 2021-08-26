@@ -16,9 +16,9 @@ function Q = inv_kin(S,L,angle,sol)
     
     % Compute q3 (needs x or y, z and q1)
     % There are 2 possible solutions
-    if q1 == 0.5*pi
+    if abs(q1-0.5*pi) < 1e-10
         argument = (-x*sin(angle)+(z-l1a)*cos(angle))/l3;
-    elseif q1 == -0.5*pi
+    elseif abs(q1-(-0.5*pi)) < 1e-10
         argument = (x*sin(angle)+(z-l1a)*cos(angle))/l3;
     else
         argument = ((y-l1b*sin(q1))./(cos(q1))*sin(angle)+(z-l1a)*cos(angle))/l3;

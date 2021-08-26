@@ -21,6 +21,7 @@ idx_link3 = contains({smiData.Solid(:).ID},'_3');
 % Format: 3D arrays (spatial position of CoM) --> [xg; yg; zg];
 
 g0 = nan;
+G0 = NaN(3,1);
 
 % HARD-CODED FOR THE SAKE OF CONVENIENCE (See PDF File: Link1 Inertial Data)
 G1 = [-0.179; -0.078; -0.04];
@@ -38,7 +39,10 @@ g3 = smiData.Solid(9).CoM(1)/100;
 
 G3 = [g3 0 0];
 
-Gpos = {g0 G1 g2 g3};
+% Gpos = {g0 G1 l1c+l2+q2-g2 -l3+abs(g3)};
+Gpos = {G0 G1 G2 G3};
+
+
 
 
 % MASSES [kg]
@@ -66,14 +70,14 @@ Jg2 = [0.016 0.523 0.524 0 0 0]; % The 3 PoI are set to 0, they are negligible
 
 Jg3 = [smiData.Solid(9).MoI/10000 0 0 0]; % The 3 PoI are set to 0, they are negligible
 
-J_links = {Jg0 Jg1 Jg2 Jg3};
+Jg_links = {Jg0 Jg1 Jg2 Jg3};
 
 
 % EXTERNAL FORCES AND TORQUES ON THE GRIPPER [N and Nm]
 forceValue = 0;
 fx = forceValue; fy = forceValue; fz = forceValue;
-F = [fx; fy; fz];
+Force = [fx; fy; fz];
 
 torqueValue = 0;
 cx = torqueValue; cy = torqueValue; cz = torqueValue;
-C = [cx; cy; cz];
+Torque = [cx; cy; cz];
