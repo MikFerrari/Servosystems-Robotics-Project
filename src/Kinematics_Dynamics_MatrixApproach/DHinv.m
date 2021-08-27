@@ -15,11 +15,11 @@ function [Q,q1,q2,q3] = DHinv(P,D,A,alpha)
     
     % q3
     if abs(q1-0.5*pi)<1e-10
-        argument = (-x*sin(alpha)+(z-D(1))*cos(alpha))/A(3)
+        argument = (-x*sin(alpha)+(z-D(1))*cos(alpha))/A(3);
     elseif abs(q1-(-0.5*pi))<1e-10
-        argument = (x*sin(alpha)+(z-D(1))*cos(alpha))/A(3)
+        argument = (x*sin(alpha)+(z-D(1))*cos(alpha))/A(3);
     else
-        argument = ((y-A(1)*sin(q1))./(cos(q1))*sin(alpha)+(z-D(1))*cos(alpha))/A(3)
+        argument = ((y-A(1)*sin(q1))./(cos(q1))*sin(alpha)+(z-D(1))*cos(alpha))/A(3);
     end
            
     q3(1) = asin(argument);

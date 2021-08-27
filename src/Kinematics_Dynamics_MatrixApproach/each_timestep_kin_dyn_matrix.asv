@@ -25,6 +25,7 @@ for i = 1:nPoints
         Qpp(:,i) = real([q1pp; q2pp; q3pp]);
         
     elseif task == 2
+        %{
         % JOINT COORDINATES THROUGH INVERSE KINEMATICS
         Qcell = inv_kin_numerical(num2cell(S_shape(:,i)),L,angle,Q0);
         Q(:,i) = cell2mat(Qcell);
@@ -42,6 +43,23 @@ for i = 1:nPoints
 
         % ACCELERATION ARRAY
         Qpp(:,i) = J^-1*(Spp_shape_diff(:,i)-Jp*Qp(:,i));
+        %}
+        
+        %%{
+        % JOINT COORDINATES THROUGH INVERSE KINEMATICS
+        [temp,~,~,~] = DHinv(S_shape(:,i),D,A,alpha);
+        Q(:,i) = temp(1,:)';
+        q1=Q(1,i); q2=Q(1,i);q1=Q(1,i);
+
+        % VELOCITY ARRAY
+        Qp(:,i) = Qpinv(Q(1,i),Q(2,i),Q(3,i),Sp_shape_diff(1,i),Sp_shape_diff(2,i),Sp_shape_diff(3,i));
+
+        % ACCELERATION ARRAY      
+        Qpp(:,i) = Qppinv(Q(1,i),Q(2,i),Q(3,i),...
+                         Qp(1,i),Qp(2,i),Qp(3,i),...
+                         Sp_shape_diff(1,i),Sp_shape_diff(2,i),Sp_shape_diff(3,i),...
+                         Spp_shape_diff(1,i),Spp_shape_diff(2,i),Spp_shape_diff(3,i));
+        %}
         
     elseif task == 3
         [q1,q1p,q1pp] = cycloidal(tt(i),Ttot,Q_final_shape(1),dQ(1));
@@ -76,7 +94,7 @@ for i = 1:nPoints
 %                 T = [l1*cos(q1); l1*sin(q1); h];
 %                 
                 % Center of mass
-                Tg = [g1*cos(q1); g1*sin(q1); h];
+%                 Tg = [g1*cos(q1); g1*sin(q1); h];
                 
             case 3
                 % SECOND LINK
@@ -89,7 +107,7 @@ for i = 1:nPoints
 %                 T = [l2*cos(q2); l2*sin(q2); 0];
                 
                 % Center of mass
-                Tg = [g2*cos(q2); g2*sin(q2); 0];
+%                 Tg = [g2*cos(q2); g2*sin(q2); 0];
                 
             case 4
                 % THIRD LINK
@@ -102,7 +120,7 @@ for i = 1:nPoints
 %                 T = [l3*cos(q3); 0; l3*(-sin(q3))];
                 
                 % Center of mass
-                Tg = [g3*cos(q3); 0; g3*(-sin(q3))];   
+%                 Tg = [g3*cos(q3); 0; g3*(-sin(q3))];   
                 
         end
         %}
@@ -110,7 +128,7 @@ for i = 1:nPoints
         % POSITION OF REFERENCE FRAME
         % Position matrix of the current frame wrt the PREVIOUS frame
         M_rel_prevRef = Mall{j-1}(q1,q2,q3);
-        Mg_rel_prevRef = Mall_G{j-1}(q1,q2,q3);
+        Mg_rel = Mall_G{j-1}(q1,q2,q3);
         
 %         Mg_rel =  M_rel_prevRef + [zeros(3) Tg;
 %                                    [0 0 0] 1];
@@ -123,8 +141,9 @@ for i = 1:nPoints
         % Position matrix of the CENTER OF MASS wrt the previous frame
 %         Mg_rel_prevRef = [   R    Tg;
 %                           [0 0 0]  1];
+
         % Save new matrix into position matrices array
-%         MMg_prev(:,:,j,i) = Mg_rel_prevRef;
+        MMg_prev(:,:,j,i) = Mg_rel;
         
         % VELOCITY OF REFERENCE FRAME
         % Current frame wrt the PREVIOUS frame expressed in the PREVIOUS frame
@@ -165,7 +184,7 @@ for i = 1:nPoints
     
     %%%%% END KINEMATICS %%%%%
     
-    %{
+    %%{
     %%%%% DYNAMICS (from the end-effector to the base link) %%%%%      
     
     % CONVERT EXTERNAL FORCES-TORQUES ON THE GRIPPER TO THE BASE REFERENCE FRAME
@@ -206,7 +225,8 @@ for i = 1:nPoints
         
         % ACTUATOR FORCES AND TORQUES IN THE JOINT BETWEEN THE CURRENT LINK AND THE PREVIOUS ONE
         if j > 1
-            phi_actuators_array_0(1,1,j,i) = -pseudoScalar(Phi_vinc_array_0(:,:,j,i),signFix(j-1)*LL_0(:,:,j-1));
+%             phi_actuators_array_0(1,1,j,i) = -pseudoScalar(Phi_vinc_array_0(:,:,j,i),signFix(j-1)*LL_0(:,:,j-1));
+            phi_actuators_array_0(1,1,j,i) = -pseudoScalar(Phi_vinc_array_0(:,:,j,i),LL_0(:,:,j-1));
         end
         
         % KINETIC & POTENTIAL ENERGY OF THE CURRENT LINK WRT THE BASE FRAME

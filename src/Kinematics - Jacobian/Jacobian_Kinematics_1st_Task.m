@@ -117,39 +117,10 @@ end
 %% Compute derivatives (numerical differentiation) to debug results
 
 dT = Ttot/nPoints;
-
-% GRIPPER COORDINATES
-xp_diff = [0 diff(S(1,:),[],2)/dT];
-yp_diff = [0 diff(S(2,:),[],2)/dT];
-zp_diff = [0 diff(S(3,:),[],2)/dT];
-
-xpp_diff = [0 diff(Sp(1,:),[],2)/dT];
-ypp_diff = [0 diff(Sp(2,:),[],2)/dT];
-zpp_diff = [0 diff(Sp(3,:),[],2)/dT];
-
-% GRIPPER VELOCITY AND ACCELERATION ALONG THE TRAJECTORY
-vel = [0 diff(pos)/dT];
-acc = [0 diff(vel)/dT];
-
-% JOINT COORDINATES
-Qp_diff = [[0; 0; 0] diff(Q,[],2)/dT];
-Qpp_diff = [[0; 0; 0] diff(Qp,[],2)/dT];
+diff_debug_kin
 
 
 %% Plot all results
 
-% TRAJECTORY
-figure('name','Motion from home to first point of the shape - Trajectory','NumberTitle','off')
-plot3(S(1,:),S(2,:),S(3,:))              % Trajectory
-hold on
-plot3(S_home(1),S_home(2),S_home(3),'or')                               % Home point
-plot3(S_initial_shape(1),S_initial_shape(2),S_initial_shape(3),'og')    % First point of the shape
-grid on
-axis equal
-view(30,20)
-xlabel('x [m]'); ylabel('y [m]'); zlabel('z [m]')
-title('Trajectory from the home position to the beginning of the shape');
-legend('trajectory','home position','first point of the shape');
-
-% PLOTS
+task = 1;
 create_plots_kinematics

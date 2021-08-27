@@ -37,7 +37,7 @@ G2 = [0; g2; 0];
 
 g3 = smiData.Solid(9).CoM(1)/100;
 
-G3 = [g3 0 0];
+G3 = [g3; 0; 0];
 
 % Gpos = {g0 G1 l1c+l2+q2-g2 -l3+abs(g3)};
 Gpos = {G0 G1 G2 G3};
@@ -66,7 +66,7 @@ Jg0 = [nan nan nan nan nan nan];
 Jg1 = [5.873 7.234 4.887 -1.215 -2.015 -1.401];
 
 % HARD-CODED FOR THE SAKE OF CONVENIENCE (See PDF File: Link2 Inertial Data)
-Jg2 = [0.016 0.523 0.524 0 0 0]; % The 3 PoI are set to 0, they are negligible
+Jg2 = [0.524 0.016 0.523 0 0 0]; % The 3 PoI are set to 0, they are negligible
 
 Jg3 = [smiData.Solid(9).MoI/10000 0 0 0]; % The 3 PoI are set to 0, they are negligible
 
@@ -81,3 +81,6 @@ Force = [fx; fy; fz];
 torqueValue = 0;
 cx = torqueValue; cy = torqueValue; cz = torqueValue;
 Torque = [cx; cy; cz];
+
+% MASS OF THE GRIPPER (of the object in the gripper)
+m_grip = 0;

@@ -26,19 +26,17 @@ spline_points_target = compute_trajectory(nPoints_spline,dilation_factor, ...
 % EVALUATE SYMBOLIC EXTENDED JACOBIAN AND ITS TEMPORAL DERIVATIVE
 syms l1a l1b l1c l2 l3 tilt_angle ...
      q1_sym(t) q2_sym(t) q3_sym(t) ...
-     q1p_sym(t) q2p_sym(t) q3p_sym(t)
-syms G1 [1 3]
-syms G2 [1 3]
-syms G3 [1 3]
-syms q1 q3
+     q1p_sym(t) q2p_sym(t) q3p_sym(t) ...
+     G1 G2 G3 ...
+     q1 q3
 Qsymb = [l1a; l1b; l1c; l2; l3; tilt_angle; ...
          q1_sym(t); q2_sym(t); q3_sym(t); ...
-         G1.'; G2.'; G3.'; ...
+         G1; G2; G3; ...
          q1; q3];
 Qp_symb = [l1a; l1b; l1c; l2; l3; tilt_angle; ...
            q1_sym(t); q2_sym(t); q3_sym(t); ...
            q1p_sym(t); q2p_sym(t); q3p_sym(t); ...
-           G1.'; G2.'; G3.';
+           G1; G2; G3;
            q1; q3];
 
 [~,~,Je_symb] = jac_ext_symb;
@@ -74,10 +72,7 @@ Ttot = max([T1_min T2_min T3_min]);
 
 
 % INITIALIZE ARRAYS
-% Number of points in which to compute the law of motion
-nPoints = 100;
-
-nExtCoord = size(formula(Je_symb),1);
+nExtCoord = size(Je_symb,1);
 
 Q = zeros(3,nPoints); Qp = zeros(3,nPoints); Qpp = zeros(3,nPoints);
 
@@ -97,13 +92,13 @@ Wtot_plus_weight = zeros(1,nPoints);
 % 5-mass approximation for link 1
 % Jg_links{2}(3) --> moment of inertia around x axiz (rotation axis) of
 %                    frame attached to link 3
-G_ref0 = [L(2); 0; L(1)]+Gpos{2};
+G_ref0 = [l1b; 0; l1a]+Gpos{2};
 
-A = [1      1      1                     1         1;
-     0      0      G_ref0(1)             L(2)      L(2);
-     0      0      G_ref0(2)             0        -L(3)*cos(angle);
-     0      L(1)   G_ref0(3)             L(1)      (L(1)+L(3)*sin(angle));
-     0      0      norm(G_ref0(1:2))^2   L(2)^2    (L(2)^2+(L(3)*cos(angle))^2)];
+A = [1      1      1                      1        1;
+     0      0      G_ref0(1)             l1b      l1b;
+     0      0      G_ref0(2)             0        -l1c*cos(angle);
+     0      l1a    G_ref0(3)             l1a      (l1a+l1c*sin(angle));
+     0      0      norm(G_ref0(1:2))^2   l1b^2    (l1b^2+(l1c*cos(angle))^2)];
 
 B = [m1; m1*G_ref0; Jg_links{2}(3)];
 
@@ -129,18 +124,18 @@ M_inclinedToVert(1:2,1:2) = [cos(angle) -sin(angle);
                              sin(angle)  cos(angle)];
 Jg2_vert_axis = M_inclinedToVert*Jg2_matrix*M_inclinedToVert';
 
-m2_dist = Jg2_vert_axis(1,1)/((L(4)-abs(Gpos{3}(2)))*L(4));
-m2_prox = Jg2_vert_axis(1,1)/(abs(Gpos{3}(2))*L(4));
-m2_g = m2-Jg2_vert_axis(1,1)/(abs(Gpos{3}(2))*(L(4)-abs(Gpos{3}(2))));
+m2_dist = Jg2_vert_axis(1,1)/((l2-abs(Gpos{3}(2)))*l2);
+m2_prox = Jg2_vert_axis(1,1)/(abs(Gpos{3}(2))*l2);
+m2_g = m2-Jg2_vert_axis(1,1)/(abs(Gpos{3}(2))*(l2-abs(Gpos{3}(2))));
 
 % 3-mass approximation for link 3
 % Jg_links{4}(2) --> moment of inertia around y axiz (rotation axis) of
 %                    frame attached to link 3
 % Gpos{4}(1) --> position of the CoM of link 3 wrt frame attached to link 3
 %                along the x-axis of the same frame
-m3_dist = Jg_links{4}(2)/((L(5)-abs(Gpos{4}(1)))*L(5));
-m3_prox = Jg_links{4}(2)/(abs(Gpos{4}(1))*L(5));
-m3_g = m3-Jg_links{4}(2)/(abs(Gpos{4}(1))*(L(5)-abs(Gpos{4}(1))));
+m3_dist = Jg_links{4}(2)/((l3-abs(Gpos{4}(1)))*l3);
+m3_prox = Jg_links{4}(2)/(abs(Gpos{4}(1))*l3);
+m3_g = m3-Jg_links{4}(2)/(abs(Gpos{4}(1))*(l3-abs(Gpos{4}(1))));
 
 
 % MASS MATRIX
@@ -152,18 +147,21 @@ M = diag([repelem(m_grip+m3_dist,3), ...
           repelem(m1_b,3), ...
           repelem(m1_g,3), ...
           repelem(m1_a,3), ...
-          (Jg_links{2}(3)+Jg2_vert_axis(1,1)), Jg_links{4}(2)]);
+          (Jg_links{2}(3)+Jg2_vert_axis), Jg_links{4}(2)]);
 
       
 % EXTERNAL FORCES AND WEIGHT MATRIX
 Fext = [fx; fy; fz; zeros(size(M,1)-3,1)];
 
 g = -9.81;
-Ag = [repmat([0; 0; g],(nExtCoord-2)/3,1); [0; 0]];
+Ag = [repmat([0; 0; g],nExtCoord/3-1,1); [0; 0; 0]];
 
 Ftot = Fext+M*Ag;
 
 
+% SAMPLING POINTS
+% Number of points in which to compute the law of motion
+nPoints = 100;
 tt = linspace(0,Ttot,nPoints);
 
 
@@ -187,8 +185,8 @@ for i = 1:nPoints
     S(:,i) = cell2mat(Scell);
 
     % CONVERT FROM SYMBOLIC TO NUMERICAL VALUES
-    Je = double(subs(Je_symb,Qsymb,[L'; angle; Q(:,i); Gpos{2}; Gpos{3}; Gpos{4}; q1; q3]));
-    Jep = double(subs(Jep_symb,Qp_symb,[L'; angle; Q(:,i); Qp(:,i); Gpos{2}; Gpos{3}; Gpos{4}; q1; q3]));
+    Je = double(subs(Je_symb,Qsymb,[L'; angle; Q(:,i); Gpos{2}; Gpos{3}; Gpos{4}]));
+    Jep = double(subs(Jep_symb,Qp_symb,[L'; angle; Q(:,i); Qp(:,i); Gpos{2}; Gpos{3}; Gpos{4}]));
     
     % VELOCITY ARRAY
     Sp(:,i) = Je*Qp(:,i);    
@@ -199,7 +197,7 @@ for i = 1:nPoints
     % POSITION OF THE GRIPPER ALONG THE TRAJECTORY
     % (velocity and acceleration are computed afterwards using diff()/dT)
     if i ~= 1
-        pos(i) = pos(i-1) + norm(S(1:3,i) - S(1:3,i-1));
+        pos(i) = pos(i-1) + norm(Se(1:3,i) - Se(1:3,i-1));
     elseif i == 1
         pos(i) = 0;
     end
@@ -217,7 +215,8 @@ for i = 1:nPoints
     Ek(:,i) = 0.5*Sp(:,i)'*M*Sp(:,i);
     
     % POTENTIAL ENERGY
-    Ep(:,i) = -Ag'*M*S(:,i); % "-" since Gpos was defined as a negative value
+    Ep(:,i) = Ag'*M*S(:,i); 
+%     Ep(:,i) = -Ag'*M*S(:,i); % "-" since Gpos was defined as a negative value
     
     % TOTAL ENERGY
     Etot(:,i) = Ek(:,i)+Ep(:,i);
@@ -243,16 +242,40 @@ end
 %% Compute derivatives (numerical differentiation) to debug results
 
 dT = Ttot/nPoints;
-diff_debug_kin
 
-% DERIVATIVE OF TOTAL ENERGY and JUST KINETIC ENERGY
-Etot_diff = diff(Etot)/dT;
-Ek_diff = diff(Ek)/dT;
+% GRIPPER COORDINATES
+xp_diff = [0 diff(S(1,:),[],2)/dT];
+yp_diff = [0 diff(S(2,:),[],2)/dT];
+zp_diff = [0 diff(S(3,:),[],2)/dT];
+
+xpp_diff = [0 diff(Sp(1,:),[],2)/dT];
+ypp_diff = [0 diff(Sp(2,:),[],2)/dT];
+zpp_diff = [0 diff(Sp(3,:),[],2)/dT];
+
+% GRIPPER VELOCITY AND ACCELERATION ALONG THE TRAJECTORY
+vel = [0 diff(pos)/dT];
+acc = [0 diff(vel)/dT];
+
+% JOINT COORDINATES
+Qp_diff = [[0; 0; 0] diff(Q,[],2)/dT];
+Qpp_diff = [[0; 0; 0] diff(Qp,[],2)/dT];
 
 
 %% Plot all results
 
+% TRAJECTORY
+figure('name','Motion from home to first point of the shape - Trajectory','NumberTitle','off')
+plot3(S(1,:),S(2,:),S(3,:))              % Trajectory
+hold on
+plot3(S_home(1),S_home(2),S_home(3),'or')                               % Home point
+plot3(S_initial_shape(1),S_initial_shape(2),S_initial_shape(3),'og')    % First point of the shape
+grid on
+axis equal
+view(30,20)
+xlabel('x [m]'); ylabel('y [m]'); zlabel('z [m]')
+title('Trajectory from the home position to the beginning of the shape');
+legend('trajectory','home position','first point of the shape');
+
 % PLOTS
-task = 1;
 create_plots_kinematics
 create_plots_dynamics

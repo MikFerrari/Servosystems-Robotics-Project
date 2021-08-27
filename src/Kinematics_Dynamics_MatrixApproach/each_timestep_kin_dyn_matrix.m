@@ -25,6 +25,7 @@ for i = 1:nPoints
         Qpp(:,i) = real([q1pp; q2pp; q3pp]);
         
     elseif task == 2
+        %{
         % JOINT COORDINATES THROUGH INVERSE KINEMATICS
         Qcell = inv_kin_numerical(num2cell(S_shape(:,i)),L,angle,Q0);
         Q(:,i) = cell2mat(Qcell);
@@ -42,6 +43,23 @@ for i = 1:nPoints
 
         % ACCELERATION ARRAY
         Qpp(:,i) = J^-1*(Spp_shape_diff(:,i)-Jp*Qp(:,i));
+        %}
+        
+        %%{
+        % JOINT COORDINATES THROUGH INVERSE KINEMATICS
+        [temp,~,~,~] = DHinv(S_shape(:,i),D,A,alpha);
+        Q(:,i) = temp(1,:)';
+        q1=Q(1,i); q2=Q(2,i); q3=Q(3,i);
+
+        % VELOCITY ARRAY
+        Qp(:,i) = Qpinv(Q(1,i),Q(2,i),Q(3,i),Sp_shape_diff(1,i),Sp_shape_diff(2,i),Sp_shape_diff(3,i));
+
+        % ACCELERATION ARRAY      
+        Qpp(:,i) = Qppinv(Q(1,i),Q(2,i),Q(3,i),...
+                         Qp(1,i),Qp(2,i),Qp(3,i),...
+                         Sp_shape_diff(1,i),Sp_shape_diff(2,i),Sp_shape_diff(3,i),...
+                         Spp_shape_diff(1,i),Spp_shape_diff(2,i),Spp_shape_diff(3,i));
+        %}
         
     elseif task == 3
         [q1,q1p,q1pp] = cycloidal(tt(i),Ttot,Q_final_shape(1),dQ(1));
