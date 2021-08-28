@@ -58,11 +58,10 @@ elseif task == 3
     legend([p1(1) p2(1) p3],'P3 pose','P1 pose','joint trajectory');
 end
 
-axis equal
 grid on
 title('Manipulator poses and joint trajectory');
 xlabel('x [m]'), ylabel('y [m]'), zlabel('z [m]')
-view(30,20) % Point of view: (azimut,elevation)
+view(27,26) % Point of view: (azimut,elevation)
 if task == 1
     task_title = " from P1 to P2 ";
 elseif task == 2
@@ -151,10 +150,11 @@ grid on
 leg=legend('$displacement$ \space $[m]$','$velocity$ \space $[m/s]$','$acceleration$ \space $[m/s^2]$','Location','northwest');
 set(leg, 'Interpreter', 'latex','FontSize',fsz)
 
-title(strcat('Displacement, velocity and acceleration along the trajectory',task_title));
+title('Curvilinear absissa, velocity and acceleration along the trajectory');
+
 
 % PLOT VELOCITY AND ACCELERATION FOR X, Y AND Z  - ANALYTICAL VS NUMERICAL SOLUTION
-figure('name',strcat('Motion',task_title,' - Gripper space'),'NumberTitle','off')
+figure('name','Motion - Gripper space','NumberTitle','off')
 t = tiledlayout(3,1);
 
 nexttile
@@ -235,16 +235,14 @@ title(t,{strcat('Joint coordinates',task_title), ...
 
 %%{
 % FORCES/TORQUES APPLIED BY THE ACTUATORS
-figure('Name',strcat('Actuator torques and forces',task_title),'NumberTitle','off')
-t = tiledlayout(3,1);
-% t = tiledlayout(3,1);
-
-title(t,strcat('Actuator torques and forces',task_title));
+figure('Name',strcat("Actuator torques [F_x = F_y = F_z = ",num2str(forceValue)," N]"),'NumberTitle','off')
+t = tiledlayout(3,1,'TileSpacing','none');
+title(t,strcat("Actuator torques - [F_x = F_y = F_z = ",num2str(forceValue)," N]"));
 actuatorTorques = reshape(phi_actuators_array_0,4,1,nPoints,[]);
-titles = {'','Joint 1','Joint 2','Joint 3'};
+titles = {'','Torque joint 1','Torque joint 2','Torque joint 3'};
 for i = 2:4
     nexttile
-    plot(tt, actuatorTorques(i,:))
+    plot(tt, actuatorTorques(i,:), [tt(1) tt(end)],[0 0],'k')
     grid on
     title(titles{i})
     xlabel('time'), ylabel('Nm')
@@ -252,14 +250,14 @@ for i = 2:4
 end
 
 % POWER DEVELOPED BY THE ACTUATORS
-figure('Name',strcat('Actuator power',task_title),'NumberTitle','off')
-t = tiledlayout(3,1);
-title(t,strcat('Actuator power',task_title));
+figure('Name',strcat("Actuator power [F_x = F_y = F_z = ",num2str(forceValue)," N]"),'NumberTitle','off')
+t = tiledlayout(3,1,'TileSpacing','none');
+title(t,strcat("Actuator power [F_x = F_y = F_z = ",num2str(forceValue)," N]"));
 actuatorPower = reshape(Wq,4,1,nPoints,[]);
-titles = {'','Joint 1','Joint 2','Joint 3'};
+titles = {'','Power joint 1','Power joint 2','Power joint 3'};
 for i = 2:4
     nexttile
-    plot(tt, actuatorPower(i,:))
+    plot(tt, actuatorPower(i,:), [tt(1) tt(end)],[0 0],'k')
     grid on
     title(titles{i})
     xlabel('time'), ylabel('Nm')
@@ -267,9 +265,9 @@ for i = 2:4
 end
 
 % KINETIC, POTENTIAL & TOTAL ENERGY
-figure('Name',strcat('Kinetic and potential energy',task_title),'NumberTitle','off')
-t = tiledlayout(3,1);
-title(t,strcat('Kinetic and potential energy',task_title));
+figure('Name',strcat("Kinetic and potential energy - [F_x = F_y = F_z = ",num2str(forceValue)," N]"),'NumberTitle','off')
+t = tiledlayout(3,1,'TileSpacing','none');
+title(t,strcat("Kinetic and potential energy - [F_x = F_y = F_z = ",num2str(forceValue)," N]"));
 titles = {'Potential Energy','Kinetic Energy','Total Energy (E_k+E_p)'};
 EE = [Ep_tot; Ek_tot; E_tot];
 for i = 1:3
@@ -282,11 +280,11 @@ for i = 1:3
 end
 
 % MECHANICAL ENERGY CONSERVATION TO CHECK DYNAMICAL ANALYSIS (1st method)
-fsz=11;
-figure('Name',strcat('Power equality 1',task_title),'NumberTitle','off')
+fsz=11
+figure('Name','Power equality','NumberTitle','off')
 plot(tt(1:end),[0 E_tot_diff], tt,W_tot, [tt(1) tt(end)],[0 0],'k')
 grid on
-title(strcat('Conservation of mechanical energy',task_title))
+title('Derivative of total energy vs power of actuators and external forces')
 % legend('dE_{tot}/dt','W_{q}+W_{ext}','Location','southwest')
 
 leg = legend('${dE_k}/{dt}$','$W_{q} + W_{ext}$','Location','southwest');
@@ -295,12 +293,13 @@ xlabel('time [s]'), ylabel('power [W]')
 xlim([tt(1) tt(end)])
 
 % MECHANICAL ENERGY CONSERVATION TO CHECK DYNAMICAL ANALYSIS (2nd method)
-figure('Name',strcat('Power equality 2',task_title),'NumberTitle','off')
+figure('Name','Power equality','NumberTitle','off')
 plot(tt(1:end),[0 Ek_tot_diff], tt,W_tot_plus_weight, [tt(1) tt(end)],[0 0],'k')
 grid on
-title(strcat('Conservation of mechanical energy',task_title))
+title('Derivative of kinetic energy vs power of actuators, external and weight forces')
 leg = legend('${dE_k}/{dt}$','$W_{q} + W_{ext} + W_{weight}$','Location','southwest');
 set(leg, 'Interpreter', 'latex','FontSize',fsz)
 xlabel('time [s]'), ylabel('power [W]')
 xlim([tt(1) tt(end)])
 %}
+%%

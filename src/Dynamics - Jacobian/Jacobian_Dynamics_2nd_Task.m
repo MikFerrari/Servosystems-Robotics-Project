@@ -8,12 +8,12 @@
 %% Preliminary operations
 
 % LOAD ROBOT DATA
-clc; clear; close all
+clc; clear
 load_robot_data;
 
 
 % COMPUTE TRAJECTORY FOR THE 2ND TASK
-nPoints_spline = 100;   dilation_factor = 0.35;
+nPoints_spline = 500;   dilation_factor = 0.35;
 x_tilt = deg2rad(45);   y_tilt = deg2rad(65);   z_tilt = deg2rad(10);
 x_offset = 0.95;        y_offset = 0.3;         z_offset = 0.8;
 
@@ -172,10 +172,11 @@ S_shape = [spline_points_target(1:3,1) spline_points_target(1:3,:) spline_points
 % of interpolation points obtained with the spline
 nPoints = size(S_shape,2);
 
+%%{
 % Compute sampling time in order to respect velocity and acceleration
 % constraints of the joints
 dT = 0.05; % Initial guess
-Qp = [Inf; Inf; Inf]; Qpp = [Inf; Inf; Inf];
+Qp = [Inf; Inf; Inf]; Qpp = [Inf; Inf; Inf]; Fq = [Inf; Inf; Inf];
 Q0 = num2cell(Q_initial_shape);
 
 while sum([max(abs(Qp),[],2) > vel_limits([2 4 6])'; ...
@@ -233,6 +234,10 @@ end
 dT = ceil(dT*100);
 dT = dT/100;
 disp(dT)
+%}
+% dT = 0.12;
+% disp('Sampling time [s]: ')
+% disp(dT)
 
 
 %% Loop through each sampling period

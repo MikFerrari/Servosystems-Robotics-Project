@@ -9,7 +9,7 @@
 %% Preliminary operations
 
 % LOAD ROBOT DATA
-clc; clear; close all
+clc; clear
 load_robot_data;
 
 
@@ -243,6 +243,7 @@ end
 %% Compute derivatives (numerical differentiation) to debug results
 
 dT = Ttot/nPoints;
+
 diff_debug_kin
 
 % DERIVATIVE OF TOTAL ENERGY and JUST KINETIC ENERGY

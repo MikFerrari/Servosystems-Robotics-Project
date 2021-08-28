@@ -9,7 +9,7 @@
 %% Preliminary operations
 
 % LOAD ROBOT DATA
-clc; clear; close all
+clc; clear
 load_robot_data;
 
 
@@ -174,9 +174,9 @@ for i = 1:nPoints
     %%%%% KINEMATICS %%%%%
     
     % GRIPPER COORDINATES
-    [q1,q1p,q1pp] = cycloidal(tt(i),Ttot,Q_home(1),dQ(1));
-    [q2,q2p,q2pp] = cycloidal(tt(i),Ttot,Q_home(2),dQ(2));
-    [q3,q3p,q3pp] = cycloidal(tt(i),Ttot,Q_home(3),dQ(3));
+    [q1,q1p,q1pp] = cycloidal(tt(i),Ttot,Q_final_shape(1),dQ(1));
+    [q2,q2p,q2pp] = cycloidal(tt(i),Ttot,Q_final_shape(2),dQ(2));
+    [q3,q3p,q3pp] = cycloidal(tt(i),Ttot,Q_final_shape(3),dQ(3));
     
     Q(:,i) = real([q1; q2; q3]);
     Qp(:,i) = real([q1p; q2p; q3p]);
@@ -243,6 +243,7 @@ end
 %% Compute derivatives (numerical differentiation) to debug results
 
 dT = Ttot/nPoints;
+
 diff_debug_kin
 
 % DERIVATIVE OF TOTAL ENERGY and JUST KINETIC ENERGY

@@ -82,7 +82,49 @@ for i = 1:nPoints
     
     
     for j = 2:nLinks
-        
+        %%{
+        switch j
+            case 2
+                % FIRST LINK
+                % Frame rotation wrt the previous frame
+%                 R = [cos(q1) -sin(q1) 0;
+%                      sin(q1)  cos(q1) 0;
+%                          0           0      1];
+%                 % Distal end of the link     
+%                 T = [l1*cos(q1); l1*sin(q1); h];
+%                 
+                % Center of mass
+%                 Tg = [g1*cos(q1); g1*sin(q1); h];
+                
+            case 3
+                % SECOND LINK
+                % Frame rotation wrt the previous frame
+%                 R = [cos(q2) -sin(q2) 0;
+%                      sin(q2)  cos(q2) 0;
+%                          0           0      1];
+%                      
+%                 % Distal end of the link     
+%                 T = [l2*cos(q2); l2*sin(q2); 0];
+                
+                % Center of mass
+%                 Tg = [g2*cos(q2); g2*sin(q2); 0];
+                
+            case 4
+                % THIRD LINK
+                % Frame rotation wrt the previous frame
+%                 R = [ cos(q3)    0     sin(q3);
+%                          0       1        0   ;
+%                      -sin(q3)    0     cos(q3)];
+%                  
+%                 % Distal end of the link  
+%                 T = [l3*cos(q3); 0; l3*(-sin(q3))];
+                
+                % Center of mass
+%                 Tg = [g3*cos(q3); 0; g3*(-sin(q3))];   
+                
+        end
+        %}
+
         % POSITION OF REFERENCE FRAME
         % Position matrix of the current frame wrt the PREVIOUS frame
         M_rel_prevRef = Mall{j-1}(q1,q2,q3);
@@ -131,10 +173,12 @@ for i = 1:nPoints
         
         % JOINT ABSOLUTE POSITION, VELOCITY, ACCELERATION ALONG THE TRAJECTORY
         if i ~= 1
+%             pos(i) = pos(i-1) + norm(S(1:3,i) - S(1:3,i-1));
             PP(:,j,i) = PP(:,j,i-1) + norm(SS(:,j,i) - SS(:,j,i-1)); 
         elseif i == 1
             PP(:,j,i) = 0;
         end
+%         PP(:,j,i) = norm(SS(:,j,i) - SS(:,j,1));         
     end
     
     
@@ -181,6 +225,7 @@ for i = 1:nPoints
         
         % ACTUATOR FORCES AND TORQUES IN THE JOINT BETWEEN THE CURRENT LINK AND THE PREVIOUS ONE
         if j > 1
+%             phi_actuators_array_0(1,1,j,i) = -pseudoScalar(Phi_vinc_array_0(:,:,j,i),signFix(j-1)*LL_0(:,:,j-1));
             phi_actuators_array_0(1,1,j,i) = -pseudoScalar(Phi_vinc_array_0(:,:,j,i),LL_0(:,:,j-1));
         end
         

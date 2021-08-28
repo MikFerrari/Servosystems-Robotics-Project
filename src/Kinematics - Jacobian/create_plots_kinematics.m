@@ -23,19 +23,19 @@ elseif task == 2
     hold on
     plot_robot(num2cell(Q(:,end)),L,angle,gcf);     % Final configuration
     
-    legend('P2 pose','P3 pose','joint trajectory');
+    legend([p1 p2 p3],'P2 pose','P3 pose','joint trajectory');
 
 elseif task == 3
-    p1 = plot3(S(1,end),S(2,end),S(3,end),'o','Color','#EDB120');	% Last point of the shape
+    p1 = plot3(S_final_shape(1),S_final_shape(2),S_final_shape(3),'o','Color','#EDB120');	% Last point of the shape
     hold on
-    p2 = plot3(S_home(1),S_home(2),S_home(3),'oc');                 % Home point
-    p3 = plot3(S(1,:),S(2,:),S(3,:),'k');                           % Trajectory
+    p2 = plot3(S_home(1),S_home(2),S_home(3),'oc');                                         % Home point
+    p3 = plot3(S(1,:),S(2,:),S(3,:),'k');                                                   % Trajectory
     
     plot_robot(num2cell(Q(:,1)),L,angle,gcf);       % Initial configuration
     hold on
     plot_robot(num2cell(Q(:,end)),L,angle,gcf);     % Final configuration
     
-    legend('P3 pose','P1 pose','joint trajectory');
+    legend([p1 p2 p3],'P3 pose','P1 pose','joint trajectory');
 end
 
 if task == 1
@@ -50,7 +50,7 @@ grid on
 axis equal
 title(strcat('Manipulator poses and joint trajectory',task_title));
 xlabel('x [m]'), ylabel('y [m]'), zlabel('z [m]')
-view(30,20) % Point of view: (azimut,elevation)
+view(60,50) % Point of view: (azimut,elevation)
 
 
 % POSITION, VELOCITY, ACCELERATION IN GRIPPER SPACE
@@ -125,11 +125,11 @@ grid on
 leg = legend('$displacement$ \space $[m]$','$velocity$ \space $[m/s]$','$acceleration$ \space $[m/s^2]$','Location','northwest');
 set(leg,'Interpreter', 'latex','FontSize',fsz)
 
-title('Curvilinear absissa, velocity and acceleration along the trajectory');
+title(strcat('Displacement, velocity and acceleration along the trajectory',task_title));
 
 
 % PLOT VELOCITY AND ACCELERATION FOR X, Y AND Z  - ANALYTICAL VS NUMERICAL SOLUTION
-figure('name','Motion - Gripper space','NumberTitle','off')
+figure('name',strcat('Motion - Gripper space',task_title),'NumberTitle','off')
 t = tiledlayout(3,1);
 
 nexttile
@@ -163,7 +163,7 @@ h02 = legend('$\dot{z}$ $-$ $ analytical$ \space $[m/s]$', '$\dot{z}$ $-$ $ nume
             'Location','northeastoutside');
 set(h02,'Interpreter','latex','FontSize',fsz)
 
-title(t,{'Gripper coordinates','Analytical vs numerical solution'});
+title(t,{strcat('Gripper coordinates',task_title),'Analytical vs numerical solution'});
 
 
 % PLOT JOINT COORDINATES - ANALYTICAL VS NUMERICAL SOLUTION
