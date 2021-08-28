@@ -250,7 +250,7 @@ smiData.Solid(9).ID = 'link_3*:*Default';
 smiData.PrismaticJoint(1).Pz.Pos = 0.0;
 smiData.PrismaticJoint(1).ID = '';
 
-smiData.PrismaticJoint(1).Pz.Pos = 0.0;  % m
+smiData.PrismaticJoint(1).Pz.Pos = 0;  % m
 smiData.PrismaticJoint(1).ID = '[link_1c_cylinder-2:-:link_2_piston-1]';
 
 
