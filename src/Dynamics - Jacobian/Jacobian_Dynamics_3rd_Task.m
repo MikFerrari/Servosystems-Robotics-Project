@@ -9,7 +9,7 @@
 %% Preliminary operations
 
 % LOAD ROBOT DATA
-clc; clear
+% clc; clear
 load_robot_data;
 
 
@@ -257,3 +257,8 @@ Ek_diff = diff(Ek)/dT;
 task = 3;
 create_plots_kinematics
 create_plots_dynamics
+
+
+%% Set data for Simulink simulation
+
+interpolate_Q_T_jac

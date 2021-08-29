@@ -8,14 +8,14 @@
 %% Preliminary operations
 
 % LOAD ROBOT DATA
-clc; clear
+% clc; clear
 load_robot_data;
 
 
 % COMPUTE TRAJECTORY FOR THE 2ND TASK
-nPoints_spline = 500;   dilation_factor = 0.35;
+nPoints_spline = 500;   dilation_factor = 0.20;
 x_tilt = deg2rad(45);   y_tilt = deg2rad(65);   z_tilt = deg2rad(10);
-x_offset = 0.95;        y_offset = 0.3;         z_offset = 0.8;
+x_offset = 0.85;        y_offset = 0.3;         z_offset = 0.8;
 
 spline_points_target = compute_trajectory(nPoints_spline,dilation_factor, ...
                                           x_tilt,y_tilt,z_tilt, ...
@@ -71,20 +71,6 @@ Q_initial_shape = cell2mat(inv_kin_numerical(num2cell(S_initial_shape),L,angle,Q
 dQ = Q_initial_shape-Q_home;
 abs_dQ = norm(dQ);
 
-
-% ACTUATION TIME
-% Formula for the minimum actuation time in the case of cycloidal law of motion
-T1_min = max([2*abs_dQ/vel_limits(2) sqrt(2*pi*abs_dQ/acc_limits(2)) sqrt(2*pi*abs_dQ/abs(acc_limits(1)))]);
-T2_min = max([2*abs_dQ/vel_limits(4) sqrt(2*pi*abs_dQ/acc_limits(4)) sqrt(2*pi*abs_dQ/abs(acc_limits(3)))]);
-T3_min = max([2*abs_dQ/vel_limits(6) sqrt(2*pi*abs_dQ/acc_limits(6)) sqrt(2*pi*abs_dQ/abs(acc_limits(5)))]);
-
-% The laws are computed for the whole duration of the motion of the slowest joint
-Ttot = max([T1_min T2_min T3_min]);
-
-
-% INITIALIZE ARRAYS
-% Number of points in which to compute the law of motion
-nPoints = 100;
 
 nExtCoord = size(formula(Je_symb),1);
 
@@ -172,7 +158,7 @@ S_shape = [spline_points_target(1:3,1) spline_points_target(1:3,:) spline_points
 % of interpolation points obtained with the spline
 nPoints = size(S_shape,2);
 
-%%{
+%{
 % Compute sampling time in order to respect velocity and acceleration
 % constraints of the joints
 dT = 0.05; % Initial guess
@@ -270,6 +256,7 @@ Wtot = zeros(1,nPoints);
 Wtot_plus_weight = zeros(1,nPoints);
 
 tt = (0:(nPoints-1))*dT;
+Ttot = tt(end);
 Q0 = num2cell(Q_initial_shape);
 
 for i = 1:nPoints
@@ -366,3 +353,8 @@ Ek_diff = diff(Ek)/dT;
 task = 2;
 create_plots_kinematics
 create_plots_dynamics
+
+
+%% Set data for Simulink simulation
+
+interpolate_Q_T_jac

@@ -139,6 +139,7 @@ h3 = legend('$\ddot{q_1}$ \space $[rad/s^2]$','$\ddot{q_2}$ \space $[m/s^{2}]$',
 set(h3, 'Interpreter', 'latex','FontSize',fsz)
 
 title(t,strcat('Joint coordinates',task_title));
+set(gcf,'Visible','on')
 
 
 % PLOT POSITION, VELOCITY AND ACCELERATION FOR X, Y AND Z ALONG THE TRAJECTORY
@@ -250,6 +251,7 @@ for i = 2:4
     xlabel('time'), ylabel('Nm')
     xlim([tt(1) tt(end)])
 end
+set(gcf,'Visible','on')
 
 % POWER DEVELOPED BY THE ACTUATORS
 figure('Name',strcat('Actuator power',task_title),'NumberTitle','off')

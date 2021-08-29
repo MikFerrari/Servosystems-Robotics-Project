@@ -1,4 +1,4 @@
-%% JACOBIAN DYNAMICS - 1ST TASK
+ando%% JACOBIAN DYNAMICS - 1ST TASK
 % Dynamic study of the manipulator performing the given task
 %
 % 1st task: point-to-point motion
@@ -9,7 +9,7 @@
 %% Preliminary operations
 
 % LOAD ROBOT DATA
-clc; clear
+% clc; clear
 load_robot_data;
 
 
@@ -257,3 +257,8 @@ Ek_diff = diff(Ek)/dT;
 task = 1;
 create_plots_kinematics
 create_plots_dynamics
+
+
+%% Set data for Simulink simulation
+
+interpolate_Q_T_jac
