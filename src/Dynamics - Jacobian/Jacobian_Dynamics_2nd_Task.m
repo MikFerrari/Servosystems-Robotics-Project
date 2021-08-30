@@ -161,7 +161,7 @@ nPoints = size(S_shape,2);
 %{
 % Compute sampling time in order to respect velocity and acceleration
 % constraints of the joints
-dT = 0.05; % Initial guess
+dT = 0.025; % Initial guess
 Qp = [Inf; Inf; Inf]; Qpp = [Inf; Inf; Inf]; Fq = [Inf; Inf; Inf];
 Q0 = num2cell(Q_initial_shape);
 
@@ -221,7 +221,7 @@ dT = ceil(dT*100);
 dT = dT/100;
 disp(dT)
 %}
-% dT = 0.12;
+% dT = 0.03;
 % disp('Sampling time [s]: ')
 % disp(dT)
 

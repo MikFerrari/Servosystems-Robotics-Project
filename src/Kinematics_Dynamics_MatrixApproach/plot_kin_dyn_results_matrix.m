@@ -81,24 +81,18 @@ plot(tt,x_grip,  tt,y_grip, tt,z_grip, [tt(1) tt(end)],[0 0],'k')
 xlim([tt(1) tt(end)])
 xlabel('time [s]'); ylabel('position [m]')
 grid on
-% h1 = legend('$x$','$y$','$z$','Orientation','Horizontal','Location','northeast');
-% set(h1, 'Interpreter', 'latex')
 
 nexttile
 plot(tt,xp_grip,  tt,yp_grip, tt,zp_grip, [tt(1) tt(end)],[0 0],'k')
 xlim([tt(1) tt(end)])
 xlabel('time [s]'); ylabel('velocity [m/s]')
 grid on
-% h2 = legend('$\dot{x}$','$\dot{y}$','$\dot{z}$','Orientation','Horizontal','Location','northeast');
-% set(h2, 'Interpreter', 'latex')
 
 nexttile
 plot(tt,xpp_grip,  tt,ypp_grip, tt,zpp_grip, [tt(1) tt(end)],[0 0],'k')
 xlim([tt(1) tt(end)])
 xlabel('time [s]'); ylabel('acceleration [m/s^2]')
 grid on
-% h3 = legend('$\ddot{x}$','$\ddot{y}$','$\ddot{z}$','Orientation','Horizontal','Location','northeast');
-% set(h3, 'Interpreter', 'latex')
 
 leg = legend('$x$ \space $axis$','$y$ \space $axis$','$z$ \space $axis$','Orientation', 'Horizontal');
 set(leg, 'Interpreter', 'latex','FontSize',fsz)
@@ -139,7 +133,7 @@ h3 = legend('$\ddot{q_1}$ \space $[rad/s^2]$','$\ddot{q_2}$ \space $[m/s^{2}]$',
 set(h3, 'Interpreter', 'latex','FontSize',fsz)
 
 title(t,strcat('Joint coordinates',task_title));
-set(gcf,'Visible','on')
+% set(gcf,'Visible','on')
 
 
 % PLOT POSITION, VELOCITY AND ACCELERATION FOR X, Y AND Z ALONG THE TRAJECTORY
@@ -251,7 +245,7 @@ for i = 2:4
     xlabel('time'), ylabel('Nm')
     xlim([tt(1) tt(end)])
 end
-set(gcf,'Visible','on')
+% set(gcf,'Visible','on')
 
 % POWER DEVELOPED BY THE ACTUATORS
 figure('Name',strcat('Actuator power',task_title),'NumberTitle','off')

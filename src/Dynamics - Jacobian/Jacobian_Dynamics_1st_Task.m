@@ -1,4 +1,4 @@
-ando%% JACOBIAN DYNAMICS - 1ST TASK
+%% JACOBIAN DYNAMICS - 1ST TASK
 % Dynamic study of the manipulator performing the given task
 %
 % 1st task: point-to-point motion
