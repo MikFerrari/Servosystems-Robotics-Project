@@ -1,4 +1,4 @@
-% ACTUATOR FORCE/TORQUE LIMITS
+Le % ACTUATOR FORCE/TORQUE LIMITS
 T1_inf = -150;      T1_sup = 150;      % [Nm]
 T2_inf = -200;      T2_sup = 200;      % [N]
 T3_inf = -50;       T3_sup = 50;       % [Nm]

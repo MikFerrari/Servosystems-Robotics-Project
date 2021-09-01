@@ -265,3 +265,4 @@ create_plots_dynamics
 %% Set data for Simulink simulation
 
 interpolate_Q_T
+load_STEP_files
