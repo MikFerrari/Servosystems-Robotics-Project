@@ -49,9 +49,9 @@ zpp_RHS = P0epp(3);  zpp_MLF = matlabFunction(zpp_RHS,'Vars',[q1 q2 q3 q1p q2p q
 
 Spp = solve([xpp_EQ ypp_EQ zpp_EQ], [q1pp q2pp q3pp]);
 
-q1p_Spp=simplify(Spp.q1pp);
-q2p_Spp=simplify(Spp.q2pp);
-q3p_Spp=simplify(Spp.q3pp);
+q1pp_Spp=simplify(Spp.q1pp);
+q2pp_Spp=simplify(Spp.q2pp);
+q3pp_Spp=simplify(Spp.q3pp);
 
 q1pp_MLF = matlabFunction(Spp.q1pp,'Vars',[q1 q2 q3 q1p q2p q3p xp yp zp xpp ypp zpp]);
 q2pp_MLF = matlabFunction(Spp.q2pp,'Vars',[q1 q2 q3 q1p q2p q3p xp yp zp xpp ypp zpp]);

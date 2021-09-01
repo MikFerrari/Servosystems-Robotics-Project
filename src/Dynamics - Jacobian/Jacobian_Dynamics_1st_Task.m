@@ -93,6 +93,8 @@ Wq = zeros(1,nPoints); Wext = zeros(1,nPoints); Wweight = zeros(1,nPoints);
 Wtot = zeros(1,nPoints);
 Wtot_plus_weight = zeros(1,nPoints);
 
+WWq = zeros(3,nPoints);
+
 % MASSES OF THE LINKS
 % 5-mass approximation for link 1
 % Jg_links{2}(3) --> moment of inertia around x axiz (rotation axis) of
@@ -224,6 +226,7 @@ for i = 1:nPoints
     
     % MOTOR POWER
     Wq(:,i) = Fq(:,i)'*Qp(:,i);
+    WWq(:,i) = [Fq(1,i)'*Qp(1,i); Fq(2,i)'*Qp(2,i); Fq(3,i)'*Qp(3,i)];
     
     % EXTERNAL FORCES POWER
     Wext(:,i) = Fext'*Sp(:,i);    
@@ -261,4 +264,4 @@ create_plots_dynamics
 
 %% Set data for Simulink simulation
 
-interpolate_Q_T_jac
+interpolate_Q_T

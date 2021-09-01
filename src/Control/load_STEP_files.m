@@ -1,7 +1,7 @@
 % Open the Simulink file, assign its name to the variable 'sim_filename'
 % and then launch this script to load STEP files in all SOLID blocks
 
-sim_filename = 'robot_assembly_control_joints_3';
+sim_filename = 'robot_assembly_notControlled_torque';
 
 % Ricky
 directory  = 'C:\Users\monti\OneDrive - unibs.it\Servosystems & Robotics Project\Robot Model - Solidworks\Manipulator\simscape_linked_assembly';

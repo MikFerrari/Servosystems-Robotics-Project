@@ -68,17 +68,10 @@ for i = 1:nPoints
         M_rel_prevRef = Mall{j-1}(q1,q2,q3);
         Mg_rel = Mall_G{j-1}(q1,q2,q3);
         
-%         Mg_rel =  M_rel_prevRef + [zeros(3) Tg;
-%                                    [0 0 0] 1];
-
         % Position matrix of the current frame wrt the BASE frame
         M_abs_baseRef = MM_0(:,:,j-1,i)*M_rel_prevRef;
         % Save new matrix into position matrices array
         MM_0(:,:,j,i) = M_abs_baseRef;
-        
-        % Position matrix of the CENTER OF MASS wrt the previous frame
-%         Mg_rel_prevRef = [   R    Tg;
-%                           [0 0 0]  1];
 
         % Save new matrix into position matrices array
         MMg_prev(:,:,j,i) = Mg_rel;
@@ -178,8 +171,6 @@ for i = 1:nPoints
             Wweight_link(j,i) = pseudoScalar(Phi_g_array_0(:,:,j,i),WW_0(:,:,j,i));
             % "+" because "Phi_g_array_0" is a force that acts in the
             % absolute frame and "WW_0" are absolute velocity matrices
-            
-%             Wweight_link(j,i) = trace(WW_0(:,:,j,i)*JJ_0(:,:,j,i)*Hg'); % Alternative method to compute power
         end
         
     end

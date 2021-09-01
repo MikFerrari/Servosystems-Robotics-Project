@@ -92,6 +92,7 @@ Ek = zeros(1,nPoints); Ep = zeros(1,nPoints); Etot = zeros(1,nPoints);
 Wq = zeros(1,nPoints); Wext = zeros(1,nPoints); Wweight = zeros(1,nPoints);
 Wtot = zeros(1,nPoints);
 Wtot_plus_weight = zeros(1,nPoints);
+WWq = zeros(3,nPoints);
 
 % MASSES OF THE LINKS
 % 5-mass approximation for link 1
@@ -224,6 +225,7 @@ for i = 1:nPoints
     
     % MOTOR POWER
     Wq(:,i) = Fq(:,i)'*Qp(:,i);
+    WWq(:,i) = [Fq(1,i)'*Qp(1,i); Fq(2,i)'*Qp(2,i); -Fq(3,i)'*Qp(3,i)];
     
     % EXTERNAL FORCES POWER
     Wext(:,i) = Fext'*Sp(:,i);    
@@ -239,6 +241,7 @@ for i = 1:nPoints
     
 end
 
+Fq(3,:) = -Fq(3,:);
 
 %% Compute derivatives (numerical differentiation) to debug results
 
@@ -261,4 +264,4 @@ create_plots_dynamics
 
 %% Set data for Simulink simulation
 
-interpolate_Q_T_jac
+interpolate_Q_T
